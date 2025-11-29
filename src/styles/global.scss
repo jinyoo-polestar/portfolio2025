@@ -1,0 +1,14 @@
+@import "../styles/font.scss";
+@import "../styles/variables.scss";
+
+html,
+body {
+  margin: 0;
+  height: 0;
+  font-family: $font-nanumsquare;
+}
+
+ol,
+ul {
+  list-style: none;
+}
