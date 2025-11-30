@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import "../styles/variables.scss";
+
+import Footer from "@/components/Footer";
+
+import "../styles/global.scss";
 
 export const metadata: Metadata = {
   title: "Portfolio26",
@@ -13,7 +16,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body>{children}</body>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/hkg4vmv.css"
+        ></link>
+      </head>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

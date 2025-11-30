@@ -1,10 +1,10 @@
 /* Color System */
-$black: #000;
-$gray-400: #3a3a3a;
-$gray-300: #676767;
-$gray-200: #c4c4c4;
-$gray-100: #f3f3f3;
-$white: #fff;
+$color-black: #000;
+$color-gray-400: #3a3a3a;
+$color-gray-300: #676767;
+$color-gray-200: #c4c4c4;
+$color-gray-100: #f3f3f3;
+$color-white: #fff;
 
 /* Spacing System */
 $space-2xs: 0.25rem;
@@ -16,7 +16,7 @@ $space-xl: 2.5rem;
 $space-2xl: 5rem;
 
 /* Font System */
-$font-neuils: "Neulis Neue";
+$font-neuils: "neulis-neue";
 $font-nanumsquare: "NanumSquareRound";
 
 $font-size-280: 17.5rem;
@@ -117,7 +117,7 @@ $font-weight-extrabold: 800;
   @extend %en-base;
   font-size: $font-size-16;
   line-height: $line-height-130;
-  font-weight: $font-weight-medium;
+  font-weight: $font-weight-regular;
 }
 
 .kr-t1 {
