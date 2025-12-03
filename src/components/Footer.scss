@@ -40,6 +40,7 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     margin-top: 9.875rem;
     color: $color-white;
   }
@@ -56,6 +57,7 @@
   &__email {
     display: inline-flex;
     width: 20%;
+    min-width: 17.5rem;
     align-items: center;
     justify-content: space-between;
     padding: $space-xs;
@@ -68,11 +70,38 @@
     }
 
     a {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
       background-color: $color-white;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    &__title {
+      span:first-child {
+        left: 0.5rem;
+      }
+
+      span:last-child {
+        right: 0.5rem;
+      }
+    }
+
+    &__info-box {
+      flex-direction: column;
+      margin-top: 7.625rem;
+    }
+
+    &__email {
+      min-width: unset;
+      width: 100%;
+      margin: $space-2xl 0 $space-ml;
     }
   }
 }
