@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import FooterImg from "../../public/img_footer.png";
 import ArrowIcon from "../../public/ic_arrow.svg";
+
 import "./Footer.scss";
 
 export default function Footer() {
