@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import useResponsive from "@/hooks/useResponsive";
@@ -18,13 +18,20 @@ const menuItems = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isTablet, isDesktop } = useResponsive();
+  const [mounted, setMounted] = useState(false);
+
+  const { isMobile } = useResponsive();
   const onClickMenuBtn = () => setIsMenuOpen(!isMenuOpen);
+
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   return (
     <header className="header">
       <h1 className="header__title en-s1">portfolio</h1>
-      {isDesktop ? (
+      {!isMobile ? (
         <nav className="header__nav header__nav--pc">
           <ul className="header__nav-list">
             {menuItems.map((item) => (
@@ -34,7 +41,7 @@ export default function Header() {
                   item.isButton ? "header__nav-item--contact" : ""
                 }`}
               >
-                <a className="header__nav-link" href={item.href}>
+                <a className="header__nav-link en-b1" href={item.href}>
                   {item.label}
                 </a>
               </li>

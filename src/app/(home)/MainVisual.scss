@@ -1,0 +1,135 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+.main-visual {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding: 10rem 5% 7.5rem;
+  box-sizing: border-box;
+  background-color: $color-black;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    color: $color-white;
+    text-transform: uppercase;
+
+    p {
+      display: inline-block;
+      width: fit-content;
+      padding: $space-ml;
+      background-color: rgba(58, 58, 58, 0.4);
+      border-radius: 0 $space-ml 0 0;
+    }
+
+    p:first-child {
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: $space-ml $space-ml 0 0;
+      padding-bottom: $space-sm;
+    }
+
+    p:first-child span:nth-child(2) {
+      display: inline-flex;
+    }
+
+    p:last-child {
+      border-radius: 0 0 $space-ml $space-ml;
+    }
+  }
+
+  &__star-icon {
+    position: relative;
+    display: inline-block;
+    width: 9vw;
+    aspect-ratio: 1/1;
+    background-image: url("../../../public/img_mainstar.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__bottom {
+    z-index: 1;
+    margin-left: auto;
+
+    h1 {
+      color: $color-white;
+      margin-bottom: $space-ml;
+    }
+
+    p {
+      color: $color-gray-200;
+    }
+
+    br {
+      display: none;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    z-index: 0;
+    width: 60%;
+    aspect-ratio: 1/1;
+    top: 0;
+    right: 20%;
+  }
+
+  @media (max-width: 1024px) {
+    &__top {
+      p:first-child {
+        flex-direction: column;
+        background: unset;
+        padding: 0;
+      }
+
+      p:first-child span,
+      p:last-child {
+        padding: $space-sm;
+        background-color: rgba(58, 58, 58, 0.4);
+      }
+
+      p:first-child span:first-child {
+        width: fit-content;
+        border-radius: $space-sm $space-sm 0 0;
+      }
+
+      p:first-child span:last-child {
+        border-radius: 0 $space-sm 0 0;
+      }
+
+      p:last-child {
+        border-radius: 0 $space-sm $space-sm $space-sm;
+      }
+    }
+    &__bottom {
+      max-width: unset;
+
+      h1 {
+        line-height: $line-height-130;
+      }
+
+      br {
+        display: block;
+      }
+
+      p {
+        width: 70%;
+        word-break: keep-all;
+      }
+    }
+
+    &__star-icon {
+      width: 2.5rem;
+      height: auto;
+      margin-right: $space-sm;
+    }
+  }
+}

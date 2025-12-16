@@ -1,0 +1,55 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+.main-intro {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-black;
+
+  &__inner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-xl;
+    color: $color-white;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__text {
+    font-weight: 300;
+  }
+
+  &__text b {
+    font-weight: 700;
+  }
+
+  &__text:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: $space-ml;
+  }
+
+  .ic-star {
+    display: inline-block;
+    width: 4.5rem;
+    aspect-ratio: 1/1;
+    background-image: url("../../../public/img_mainstar.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media (max-width: 1024px) {
+    &__inner {
+      gap: $space-ml;
+    }
+
+    .ic-star {
+      width: 2.5rem;
+    }
+  }
+}
