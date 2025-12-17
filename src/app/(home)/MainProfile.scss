@@ -1,0 +1,148 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+.profile {
+  width: 100%;
+  height: 100vh;
+  padding: 0 5%;
+  box-sizing: border-box;
+  background-color: $color-black;
+  color: $color-white;
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xl;
+    align-items: end;
+    color: $color-white;
+
+    h2 {
+      text-transform: uppercase;
+    }
+
+    a {
+      position: relative;
+      padding: 0 1rem;
+      height: 3rem;
+      line-height: 3rem;
+      border-radius: 6.25rem;
+      background-color: $color-white;
+      color: $color-black;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        right: -3rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: $color-white;
+        background-image: url("../../../public/ic_arrow.svg");
+        background-position: center;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .profile__content {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    gap: $space-xl;
+    max-width: 58%;
+    margin-top: $space-xl;
+    padding: $space-xl;
+    background: rgba(58, 58, 58, 0.4);
+    box-shadow: 0 0 28px 0 rgba(255, 255, 255, 0.12) inset;
+    backdrop-filter: blur(14px);
+    border-radius: $space-ml;
+  }
+
+  .profile__title {
+    margin-bottom: $space-ml;
+    text-transform: capitalize;
+
+    &-num {
+      font-style: italic;
+    }
+  }
+
+  .profile__box--personal {
+    grid-column: 1/2;
+    grid-row: 1/2;
+
+    .label {
+      display: inline-block;
+      width: 3rem;
+      margin-right: $space-ml;
+      color: $color-gray-200;
+    }
+  }
+
+  .profile__box--skill {
+    grid-column: 1/2;
+    grid-row: 2/3;
+
+    .profile__skills {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: $space-xs;
+    }
+  }
+
+  .profile__box--work {
+    grid-column: 2/3;
+    grid-row: 1/3;
+
+    .profile__work {
+      display: flex;
+      gap: $space-ml;
+    }
+
+    .profile__work:first-child {
+      margin-bottom: $space-xl;
+    }
+
+    .profile__work-title {
+      max-width: 30%;
+      flex-grow: 1;
+    }
+
+    .profile__work-details {
+      line-height: $line-height-170;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__header {
+      flex-direction: column;
+      align-items: start;
+      gap: $space-ml;
+    }
+
+    .profile__content {
+      grid-template-rows: auto;
+      grid-template-columns: 1fr;
+      max-width: unset;
+    }
+
+    .profile__box--personal {
+      grid-column: 1/1;
+      grid-row: 1/1;
+    }
+
+    .profile__box--skill {
+      grid-column: 1/1;
+      grid-row: 2/2;
+    }
+
+    .profile__box--work {
+      grid-column: 1/1;
+      grid-row: 3/3;
+    }
+  }
+}
