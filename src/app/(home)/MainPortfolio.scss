@@ -1,0 +1,79 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+$card-count: 4;
+
+.portfolio {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: $color-black;
+
+  &__title {
+    position: relative;
+    top: 15vh;
+    color: $color-white;
+    opacity: 0.08;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  &__cards {
+    position: relative;
+    perspective: 800px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    width: 60%;
+    height: 40%;
+  }
+
+  &__card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60%;
+    aspect-ratio: 430/290;
+    background: gray;
+    border-radius: 1rem;
+    transform-style: preserve-3d;
+
+    @for $i from 1 through $card-count {
+      &:nth-child(#{$i}) {
+        z-index: 4 - $i;
+        transform: translateX(#{($i - 1) * 20%}) rotateY(-30deg);
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .portfolio {
+    &__title {
+      top: 7.5rem;
+    }
+
+    &__cards {
+      width: 90%;
+      margin: 0 auto;
+      perspective: none;
+      height: auto;
+      flex-direction: column;
+      gap: $space-xl;
+    }
+
+    &__card {
+      position: relative;
+      width: 100%;
+      transform-style: unset;
+      transform: none !important;
+    }
+
+    @for $i from 1 through $card-count {
+      &:nth-child(#{$i}) {
+        z-index: 1 !important;
+        transform: none !important;
+      }
+    }
+  }
+}
