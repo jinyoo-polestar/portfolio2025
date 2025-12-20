@@ -1,0 +1,57 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+.qna {
+  width: 100%;
+  height: auto;
+  padding: 7.5rem 5%;
+  background-color: $color-black;
+  box-sizing: border-box;
+
+  &__header {
+    margin-bottom: 4.125rem;
+    text-align: center;
+    color: $color-white;
+    text-transform: uppercase;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: $space-2xl;
+    color: $color-white;
+    border-radius: $space-ml;
+    background: rgba(58, 58, 58, 0.4);
+    box-shadow: 0 0 28px 0 rgba(255, 255, 255, 0.12) inset;
+    backdrop-filter: blur(14px);
+
+    &-thumb {
+      width: 30%;
+      max-width: 12.5rem;
+      height: auto;
+      aspect-ratio: 1/1;
+      margin-right: $space-2xl;
+    }
+
+    &-inner {
+      display: inline-flex;
+      flex-direction: column;
+      gap: $space-xs;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__header {
+      margin-bottom: 2.5rem;
+    }
+
+    &__item {
+      flex-direction: column;
+      padding: $space-xl $space-ml;
+
+      &-thumb {
+        margin: 0 0 $space-ml;
+      }
+    }
+  }
+}

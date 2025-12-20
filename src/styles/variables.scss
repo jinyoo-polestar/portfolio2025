@@ -75,6 +75,11 @@ $font-weight-extrabold: 800;
   font-weight: $font-weight-bold;
 }
 
+.en-h2-italic {
+  @extend .en-h2;
+  font-style: italic;
+}
+
 .en-h3 {
   @extend %en-base;
   font-size: $font-size-112;
