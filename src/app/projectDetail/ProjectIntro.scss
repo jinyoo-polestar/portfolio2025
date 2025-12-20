@@ -1,0 +1,116 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+.intro {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 16vh 5% 0;
+  box-sizing: border-box;
+  background: $color-black;
+  overflow: hidden;
+
+  &__title {
+    &-box {
+      display: flex;
+      align-items: end;
+      flex-wrap: wrap;
+      gap: 5%;
+    }
+    &-kr {
+      margin-bottom: $space-sm;
+      color: $color-gray-200;
+    }
+    &-en {
+      color: $color-white;
+      text-transform: uppercase;
+    }
+  }
+
+  &__viewbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-md;
+    color: $color-white;
+    text-decoration: none;
+
+    &-icon {
+      display: inline-block;
+      width: 3rem;
+      height: 3rem;
+      background: $color-white;
+      background-image: url("../../../public/ic_arrow_r.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+  }
+
+  &__meta {
+    position: absolute;
+    top: 16vh;
+    right: 5%;
+    color: $color-gray-300;
+  }
+
+  &__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    position: relative;
+    margin: 0 auto;
+    z-index: 2;
+
+    &-pc {
+      width: 80%;
+      height: auto;
+      aspect-ratio: 84/50;
+      border: 1px solid white;
+    }
+
+    &-mo {
+      position: absolute;
+      right: 0;
+      top: $space-xl;
+      width: 23%;
+      height: auto;
+      aspect-ratio: 1/2;
+      border: 1px solid white;
+      z-index: 3;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__meta {
+      top: unset;
+      bottom: $space-md;
+      right: 50%;
+      transform: translateX(50%);
+    }
+
+    &__title-box {
+      gap: $space-xl;
+    }
+
+    &__img {
+      width: 100%;
+      margin-top: $space-xl;
+
+      &-pc {
+        display: none;
+      }
+
+      &-mo {
+        position: relative;
+        right: unset;
+        top: unset;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/2;
+        border: 1px solid white;
+        z-index: 3;
+      }
+    }
+  }
+}

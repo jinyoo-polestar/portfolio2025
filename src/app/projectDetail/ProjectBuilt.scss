@@ -1,0 +1,82 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+.built {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 8.75rem 14%;
+  box-sizing: border-box;
+  background: $color-black;
+
+  &__title {
+    margin-bottom: 7.5rem;
+    color: $color-white;
+    text-transform: uppercase;
+  }
+
+  &__contents {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 7.5rem $space-xl;
+  }
+
+  &__content {
+    width: calc(50% - $space-xl);
+    color: $color-white;
+
+    &-thumb {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5/3.8;
+      background-color: $color-white;
+      border-radius: $space-md;
+      margin-bottom: $space-ml;
+    }
+
+    &-icon {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: url("../../../public/ic_check.svg") no-repeat center;
+      background-size: cover;
+    }
+
+    &-title {
+      display: flex;
+      align-items: center;
+      gap: $space-2xs;
+      margin-bottom: $space-sm;
+      color: $color-gray-100;
+    }
+
+    &-desc {
+      position: relative;
+      left: calc(1.25rem + $space-xs);
+      width: calc(100% - $space-xl);
+      color: $color-gray-200;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding: 7.5rem 5%;
+
+    &__title {
+      margin-bottom: 2.5rem;
+    }
+
+    &__contents {
+      gap: $space-2xl;
+    }
+
+    &__content {
+      width: 100%;
+
+      &-thumb {
+        aspect-ratio: 34/23;
+      }
+    }
+  }
+}

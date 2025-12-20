@@ -1,0 +1,78 @@
+@use "../../styles/font" as *;
+@use "../../styles/variables" as *;
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 0 14%;
+  background-color: $color-black;
+  box-sizing: border-box;
+
+  &__title-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: $space-xl;
+    color: $color-white;
+    text-transform: uppercase;
+  }
+
+  &__desc {
+    width: 80%;
+    color: $color-gray-200;
+  }
+
+  &__contents {
+    display: flex;
+    width: 100%;
+    gap: $space-xl;
+  }
+
+  &__content {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    padding: $space-xl;
+    border-radius: $space-ml;
+    background: rgba(58, 58, 58, 0.4);
+    box-shadow: 0 0 28px 0 rgba(255, 255, 255, 0.12) inset;
+    backdrop-filter: blur(14px);
+    color: $color-white;
+
+    &-num {
+      margin-bottom: $space-sm;
+    }
+
+    &-title {
+      margin-bottom: $space-xl;
+    }
+
+    &-text {
+      color: $color-gray-200;
+      line-height: $line-height-150;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .overview {
+    padding: 0 5%;
+
+    &__contents {
+      flex-wrap: nowrap;
+    }
+
+    &__content {
+      width: 100%;
+    }
+  }
+}
