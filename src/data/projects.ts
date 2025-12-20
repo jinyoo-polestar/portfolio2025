@@ -1,0 +1,67 @@
+export const projects = [
+  {
+    name: "widmice",
+    desc: "위드마이스 웹사이트 리뉴얼",
+    period: "2025.02 ~ 2025.02",
+    thumbnail: "",
+    skills: [
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+    ],
+  },
+  {
+    name: "highendtax",
+    desc: "하이엔드택스 웹사이트 리뉴얼",
+    period: "2025.02 ~ 2025.02",
+    thumbnail: "",
+    skills: [
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+    ],
+  },
+  {
+    name: "apfel",
+    desc: "아펠 쇼핑몰 구축",
+    period: "2025.02 ~ 2025.02",
+    thumbnail: "",
+    skills: [
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+    ],
+  },
+  {
+    name: "younglim",
+    desc: "영림 웹사이트 리뉴얼",
+    period: "2025.02 ~ 2025.02",
+    thumbnail: "",
+    skills: [
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+    ],
+  },
+  {
+    name: "derma42",
+    desc: "더마포티투 쇼핑몰 구축",
+    period: "2025.11 ~ 2025.12",
+    thumbnail: "",
+    skills: [
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+      { name: "", icon: "" },
+    ],
+  },
+];

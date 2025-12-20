@@ -11,8 +11,8 @@ import CloseIcon from "../../public/ic_close.svg";
 import "./Header.scss";
 
 const menuItems = [
-  { label: "about", href: "#" },
-  { label: "Projects", href: "#" },
+  { label: "about", href: "/about" },
+  { label: "Projects", href: "/projects" },
   { label: "Get in touch", href: "#", isButton: true },
 ];
 
