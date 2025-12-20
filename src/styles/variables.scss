@@ -21,7 +21,7 @@ $font-neuils: "neulis-neue";
 $font-nanumsquare: "NanumSquareRound";
 
 $font-size-280: 17.5rem;
-$font-size-168: 168px;
+$font-size-168: 10.5rem;
 $font-size-112: 7rem;
 $font-size-104: 6.5rem;
 $font-size-84: 5.25rem;
@@ -63,14 +63,16 @@ $font-weight-extrabold: 800;
 
 .en-h1 {
   @extend %en-base;
-  font-size: $font-size-280;
+  // font-size: $font-size-280;
+  font-size: clamp(2rem, 20vw, $font-size-280);
   line-height: $line-height-90;
   font-weight: $font-weight-bold;
 }
 
 .en-h2 {
   @extend %en-base;
-  font-size: $font-size-168;
+  // font-size: $font-size-168;
+  font-size: clamp(2rem, 12vw, $font-size-168);
   line-height: $line-height-90;
   font-weight: $font-weight-bold;
 }
@@ -82,49 +84,56 @@ $font-weight-extrabold: 800;
 
 .en-h3 {
   @extend %en-base;
-  font-size: $font-size-112;
+  // font-size: $font-size-112;
+  font-size: clamp(2rem, 7vw, $font-size-112);
   line-height: $line-height-90;
   font-weight: $font-weight-bold;
 }
 
 .en-h4 {
   @extend %en-base;
-  font-size: $font-size-84;
+  // font-size: $font-size-84;
+  font-size: clamp(2rem, 6vw, $font-size-84);
   line-height: $line-height-90;
   font-weight: $font-weight-bold;
 }
 
 .en-t1 {
   @extend %en-base;
-  font-size: $font-size-56;
+  // font-size: $font-size-56;
+  font-size: clamp(2rem, 4vw, $font-size-56);
   line-height: $line-height-130;
   font-weight: $font-weight-bold;
 }
 
 .en-t2 {
   @extend %en-base;
-  font-size: $font-size-40;
+  // font-size: $font-size-40;
+  font-size: clamp(1rem, 2.8vw, $font-size-40);
   line-height: $line-height-130;
   font-weight: $font-weight-regular;
 }
 
 .en-t3 {
   @extend %en-base;
-  font-size: $font-size-36;
+  // font-size: $font-size-36;
+  font-size: clamp(1rem, 2.5vw, $font-size-36);
   line-height: $line-height-130;
   font-weight: $font-weight-regular;
 }
 
 .en-s1 {
   @extend %en-base;
-  font-size: $font-size-24;
+  // font-size: $font-size-24;
+  font-size: clamp(0.5rem, 1.7vw, $font-size-24);
   line-height: $line-height-130;
   font-weight: $font-weight-medium;
 }
 
 .en-s1-italic {
   @extend %en-base;
-  font-size: $font-size-24;
+  // font-size: $font-size-24;
+  font-size: clamp(0.5rem, 1.7vw, $font-size-24);
   line-height: $line-height-130;
   font-weight: $font-weight-medium;
   font-style: italic;
@@ -132,114 +141,141 @@ $font-weight-extrabold: 800;
 
 .en-b1 {
   @extend %en-base;
-  font-size: $font-size-18;
+  // font-size: $font-size-18;
+  font-size: clamp(0.5rem, 1.3vw, $font-size-18);
   line-height: $line-height-100;
   font-weight: $font-weight-medium;
 }
 
 .en-b2 {
   @extend %en-base;
-  font-size: $font-size-16;
+  // font-size: $font-size-16;
+  font-size: clamp(0.5rem, 1.2vw, $font-size-16);
   line-height: $line-height-130;
   font-weight: $font-weight-regular;
 }
 
 .kr-t1 {
   @extend %kr-base;
-  font-size: $font-size-48;
+  // font-size: $font-size-48;
+  font-size: clamp(1rem, 3.3vw, $font-size-48);
   line-height: $line-height-100;
   font-weight: $font-weight-bold;
 }
 
 .kr-t2 {
   @extend %kr-base;
-  font-size: $font-size-40;
+  // font-size: $font-size-40;
+  font-size: clamp(1rem, 2.8vw, $font-size-40);
   line-height: $line-height-100;
   font-weight: $font-weight-bold;
 }
 
 .kr-t3 {
   @extend %kr-base;
-  font-size: $font-size-32;
+  // font-size: $font-size-32;
+  font-size: clamp(0.5rem, 2.2vw, $font-size-32);
   line-height: $line-height-100;
   font-weight: $font-weight-bold;
 }
 
 .kr-s1 {
   @extend %kr-base;
-  font-size: $font-size-24;
+  // font-size: $font-size-24;
+  font-size: clamp(0.5rem, 1.7vw, $font-size-24);
   line-height: $line-height-130;
   font-weight: $font-weight-bold;
 }
 
 .kr-b1 {
   @extend %kr-base;
-  font-size: $font-size-16;
+  // font-size: $font-size-16;
+  font-size: clamp(0.5rem, 1.2vw, $font-size-16);
   line-height: $line-height-150;
   font-weight: $font-weight-regular;
 }
 
 .kr-b2 {
   @extend %kr-base;
-  font-size: $font-size-14;
+  // font-size: $font-size-14;
+  font-size: clamp(0.5rem, 1vw, $font-size-14);
   line-height: $line-height-170;
   font-weight: $font-weight-regular;
 }
 
 @media (max-width: 1024px) {
   .en-h1 {
-    font-size: $font-size-104;
+    // font-size: $font-size-104;
+    font-size: clamp(2rem, 28vw, $font-size-104);
   }
 
   .en-h2 {
-    font-size: $font-size-54;
+    // font-size: $font-size-54;
+    font-size: clamp(2rem, 15vw, $font-size-84);
   }
 
   .en-h3 {
-    font-size: $font-size-54;
+    // font-size: $font-size-54;
+    font-size: clamp(2rem, 15vw, $font-size-84);
   }
 
   .en-h4 {
-    font-size: $font-size-42;
+    // font-size: $font-size-42;
+    font-size: clamp(2rem, 12vw, $font-size-54);
   }
 
   .en-t1 {
-    font-size: $font-size-38;
+    // font-size: $font-size-38;
+    font-size: clamp(1rem, 10vw, $font-size-54);
   }
 
   .en-t2 {
-    font-size: $font-size-38;
+    // font-size: $font-size-38;
+    font-size: clamp(1rem, 10vw, $font-size-54);
   }
 
   .en-t3 {
-    font-size: $font-size-24;
+    // font-size: $font-size-24;
+    font-size: clamp(1rem, 7vw, $font-size-38);
   }
 
   .en-s1 {
-    font-size: $font-size-20;
+    // font-size: $font-size-20;
+    font-size: clamp(1rem, 5.5vw, $font-size-38);
   }
 
   .en-b1 {
-    font-size: $font-size-16;
+    // font-size: $font-size-16;
+    font-size: clamp(1rem, 4.3vw, $font-size-16);
+  }
+
+  .en-b2 {
+    // font-size: $font-size-16;
+    font-size: clamp(1rem, 4.3vw, $font-size-16);
   }
 
   .kr-t1 {
-    font-size: $font-size-28;
+    // font-size: $font-size-28;
+    font-size: clamp(1rem, 7.5vw, $font-size-28);
   }
 
   .kr-t2 {
-    font-size: $font-size-28;
+    // font-size: $font-size-28;
+    font-size: clamp(1rem, 7.5vw, $font-size-28);
   }
 
   .kr-t3 {
-    font-size: $font-size-20;
+    // font-size: $font-size-20;
+    font-size: clamp(1rem, 5.5vw, $font-size-20);
   }
 
   .kr-b1 {
-    font-size: $font-size-16;
+    // font-size: $font-size-16;
+    font-size: clamp(1rem, 4.3vw, $font-size-16);
   }
 
   .kr-b2 {
-    font-size: $font-size-14;
+    // font-size: $font-size-14;
+    font-size: clamp(1rem, 4vw, $font-size-14);
   }
 }

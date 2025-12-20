@@ -6,13 +6,7 @@ body {
   margin: 0;
   font-family: $font-nanumsquare;
   color: $color-black;
-}
-
-html,
-body {
-  margin: 0;
-  height: 0;
-  font-family: $font-nanumsquare;
+  background-color: $color-black;
 }
 
 ol,
@@ -24,6 +18,7 @@ p,
 div {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 small {

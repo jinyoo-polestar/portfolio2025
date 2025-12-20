@@ -9,6 +9,7 @@ import MenuIcon from "../../public/ic_menu.svg";
 import CloseIcon from "../../public/ic_close.svg";
 
 import "./Header.scss";
+import Link from "next/link";
 
 const menuItems = [
   { label: "about", href: "/about" },
@@ -30,7 +31,9 @@ export default function Header() {
 
   return (
     <header className="header">
-      <h1 className="header__title en-s1">portfolio</h1>
+      <Link className="header__title en-s1" href="/">
+        portfolio
+      </Link>
       {!isMobile ? (
         <nav className="header__nav header__nav--pc">
           <ul className="header__nav-list">
