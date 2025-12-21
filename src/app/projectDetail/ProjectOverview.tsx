@@ -1,6 +1,30 @@
+"use client";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect } from "react";
+
 import "./ProjectOverview.scss";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function ProjectOverview() {
+  useEffect(() => {
+    const overviewTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".overview",
+        start: "top top",
+        end: "bottom top",
+      },
+    });
+
+    overviewTl.fromTo(
+      [".overview__title-box", ".overview__contents"],
+      { autoAlpha: 0 },
+      { autoAlpha: 1, duration: 0.75, stagger: 0.75 }
+    );
+  });
+
   return (
     <section className="overview">
       <div className="overview__title-box">

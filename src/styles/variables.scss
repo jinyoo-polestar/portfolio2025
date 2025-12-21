@@ -182,7 +182,7 @@ $font-weight-extrabold: 800;
 .kr-s1 {
   @extend %kr-base;
   // font-size: $font-size-24;
-  font-size: clamp(0.5rem, 1.7vw, $font-size-24);
+  font-size: clamp(1rem, 1.7vw, $font-size-24);
   line-height: $line-height-130;
   font-weight: $font-weight-bold;
 }
@@ -277,5 +277,9 @@ $font-weight-extrabold: 800;
   .kr-b2 {
     // font-size: $font-size-14;
     font-size: clamp(1rem, 4vw, $font-size-14);
+  }
+
+  .kr-s1 {
+    font-size: clamp(1rem, 5vw, $font-size-18);
   }
 }
