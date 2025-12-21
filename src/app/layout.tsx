@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ScrambleText from "@/components/ScrambleText";
 
 import "../styles/global.scss";
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       </head>
       <body>
         <Header />
+        <ScrambleText />
         {children}
         <Footer />
       </body>

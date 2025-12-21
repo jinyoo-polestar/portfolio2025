@@ -9,6 +9,7 @@
   background-color: $color-black;
 
   &__title {
+    // height: clamp(2rem, 7vw, $font-size-112);
     margin-bottom: $space-xl;
     padding-top: $space-2xl;
     color: $color-white;
@@ -22,6 +23,7 @@
 
   &__categories {
     display: flex;
+    // height: 2.25rem;
     gap: $space-sm;
     margin-bottom: $space-2xl;
   }
