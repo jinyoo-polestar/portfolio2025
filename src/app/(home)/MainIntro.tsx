@@ -1,7 +1,39 @@
+"use client";
+
+import { gsap } from "gsap";
+import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 import "./MainIntro.scss";
-import Image from "next/image";
 
 export default function MainIntro() {
+  useEffect(() => {
+    const mainIntroTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".main-intro",
+        start: "top top",
+      },
+    });
+
+    mainIntroTl
+      .from(".main-intro__text", {
+        autoAlpha: 0,
+        fontSize: 0,
+        duration: 1.5,
+      })
+      .to(
+        ".main-intro__text",
+        {
+          autoAlpha: 0,
+          fontSize: 0,
+          duration: 1,
+        },
+        "+=2"
+      );
+  });
+
   return (
     <section className="main-intro">
       <div className="main-intro__inner en-h4">

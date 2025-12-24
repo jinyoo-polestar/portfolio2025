@@ -1,6 +1,50 @@
+"use client";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { useEffect } from "react";
+
 import "./MainPointVisual.scss";
 
 export default function MainPointVisual() {
+  useEffect(() => {
+    gsap.set(".point-visual__item-intro", { xPercent: -150 });
+
+    const pvTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".point-visual",
+        start: "top center",
+        end: "top top",
+        scrub: true,
+      },
+    });
+    pvTl
+      .fromTo(
+        [".point-visual__item--intro", ".point-visual__item--code"],
+        {
+          xPercent: -300,
+          autoAlpha: 0,
+        },
+        {
+          xPercent: 0,
+          autoAlpha: 1,
+        }
+      )
+      .fromTo(
+        [".point-visual__item--img", ".point-visual__item--desc"],
+        {
+          xPercent: 300,
+          autoAlpha: 0,
+        },
+        {
+          xPercent: 0,
+          autoAlpha: 1,
+        },
+        "<"
+      );
+  });
+
   return (
     <section className="point-visual">
       <div className="point-visual__inner">

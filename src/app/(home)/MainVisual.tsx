@@ -1,19 +1,23 @@
 import "./MainVisual.scss";
 import Image from "next/image";
 
+import PcModel from "../fiber/page";
+
 import MainVisualImg from "../../../public/img_mainvisual.png";
 
 export default function MainVisual() {
   return (
     <section className="main-visual">
+      {/* <PcModel /> */}
       <div className="main-visual__top en-h2">
         <p>
-          <span>design</span>
+          <span className="scramble">design</span>
           <span>
-            <i className="main-visual__star-icon"></i> driven
+            <i className="main-visual__star-icon"></i>
+            <span className="scramble"> driven</span>
           </span>
         </p>
-        <p>Developer</p>
+        <p className="scramble">Developer</p>
       </div>
       <div className="main-visual__bottom">
         <h1 className="kr-t1">

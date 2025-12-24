@@ -18,31 +18,52 @@ $card-count: 4;
     white-space: nowrap;
   }
 
+  &__cards-wrapper {
+    perspective: 7000px;
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+  }
+
   &__cards {
     position: relative;
-    perspective: 800px;
     display: flex;
     flex-wrap: nowrap;
     margin: 0 auto;
-    width: 60%;
+    width: 100%;
     height: 40%;
+    transform: translate3d(0%, 0%, 0px) scale3d(1, 1, 1) rotateX(74.6203deg)
+      rotateY(0deg) rotateZ(50deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    will-change: transform;
   }
 
   &__card {
-    position: absolute;
-    left: 0;
-    top: 0;
+    // position: absolute;
+    // left: 0;
+    // top: 0;
     width: 60%;
     aspect-ratio: 430/290;
     background: gray;
     border-radius: 1rem;
     transform-style: preserve-3d;
+    margin-top: -10vh;
+    margin-bottom: -10vh;
+    transform: rotateX(-90deg) rotateY(0) rotate(0);
 
     @for $i from 1 through $card-count {
       &:nth-child(#{$i}) {
         z-index: 4 - $i;
-        transform: translateX(#{($i - 1) * 20%}) rotateY(-30deg);
       }
+    }
+
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1) rotateX(0deg)
+        rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+      transform-style: preserve-3d;
     }
   }
 }

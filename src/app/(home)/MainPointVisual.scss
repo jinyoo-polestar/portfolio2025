@@ -11,6 +11,7 @@
   padding: 0 14%;
   background-color: $color-black;
   color: $color-gray-300;
+  overflow: hidden;
 
   &__inner {
     display: flex;
