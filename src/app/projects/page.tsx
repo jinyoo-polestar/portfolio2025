@@ -10,7 +10,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import { projects } from "@/data/projects";
-import dummyImg from "#/dummy.png";
 import "./projects.scss";
 
 export default function Projects() {
@@ -68,11 +67,11 @@ export default function Projects() {
           return (
             <li key={i} className="projects__item">
               <div className="projects__thumb">
-                <Image src={dummyImg} alt="" />
+                <Image src={project.thumbnail} alt="" />
               </div>
               <article className="projects__item-inner">
-                <p className="projects__desc kr-b1">{project.desc}</p>
-                <h2 className="projects__name en-t1">{project.name}</h2>
+                <p className="projects__desc kr-b1">{project.name}</p>
+                <h2 className="projects__name en-t1">{project.enName}</h2>
                 <p className="projects__period kr-b1">{project.period}</p>
                 <ul className="projects__skills">
                   {project.skills.map((skill, i) => {
