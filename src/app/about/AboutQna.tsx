@@ -1,13 +1,50 @@
+"use client";
+
 import Image from "next/image";
 
+import { gsap } from "gsap";
+import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { qna } from "@/data/about";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import "./AboutQna.scss";
 
 export default function AboutQna() {
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".qna",
+        start: "top top",
+        end: "bottom top",
+        pin: true,
+        scrub: true,
+      },
+    });
+
+    tl.from(".qna__header span", {
+      scale: 0,
+    }).fromTo(
+      ".qna__item",
+      {
+        autoAlpha: 0,
+        yPercent: 100,
+      },
+      {
+        autoAlpha: 1,
+        yPercent: 0,
+        stagger: 1,
+      }
+    );
+  });
+
   return (
     <section className="qna">
-      <h2 className="qna__header en-h3">q&a</h2>
+      <h2 className="qna__header en-h3">
+        <span>q&a</span>
+      </h2>
       <ul className="qna__items">
         {qna.map((item, i) => {
           return (

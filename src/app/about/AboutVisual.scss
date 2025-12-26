@@ -3,23 +3,52 @@
 
 .aboutvisual {
   position: relative;
-  display: flex;
-  width: auto;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
   background-color: $color-black;
+
+  .aboutvisual__inner {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 
   &__headline--first {
     position: relative;
-    top: 30vh;
-    left: 5%;
-    min-width: 95vw;
-    gap: $space-xl;
+    min-width: 100%;
+    // gap: $space-xl;
+    padding: 30vh 0 0 5%;
     color: $color-white;
     text-transform: uppercase;
     box-sizing: border-box;
 
-    .aboutvisual__title span:first-child {
+    .aboutvisual__keyword-box {
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .aboutvisual__keyword-inner {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      height: clamp(2rem, 12vw, $font-size-168);
+      overflow-y: hidden;
+    }
+
+    .aboutvisual__keyword {
+      position: absolute;
+      display: inline-block;
+      left: 0;
+      top: 0;
       font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    .aboutvisual__keyword-inner .hidden {
+      position: relative;
+      opacity: 0;
     }
 
     .aboutvisual__title span:last-child {
@@ -31,6 +60,11 @@
       margin-top: 5rem;
       text-transform: capitalize;
     }
+  }
+
+  &__headline--empty {
+    min-width: 100%;
+    height: 100vh;
   }
 
   &__headline--second {
