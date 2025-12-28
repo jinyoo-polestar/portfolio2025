@@ -9,11 +9,11 @@
   background-color: $color-black;
 
   &__title {
-    // height: clamp(2rem, 7vw, $font-size-112);
-    margin-bottom: $space-xl;
+    margin-bottom: $space-2xl;
     padding-top: $space-2xl;
     color: $color-white;
     text-transform: uppercase;
+    transform-origin: left top;
 
     i {
       font-style: italic;

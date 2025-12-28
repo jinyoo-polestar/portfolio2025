@@ -3,9 +3,11 @@
 import { gsap } from "gsap";
 import { useEffect, useState } from "react";
 
+import { ProjectProps } from "@/data/projects";
+
 import "./ProjectInsight.scss";
 
-export default function ProjectInsight() {
+export default function ProjectInsight({ data }: ProjectProps) {
   const [toggleState, setToggleState] = useState(0);
 
   useEffect(() => {
@@ -87,7 +89,7 @@ export default function ProjectInsight() {
           }`}
         >
           <div className="insight__content-title kr-t1">결과</div>
-          <p className="insight__content-desc kr-b1">내용내용</p>
+          <p className="insight__content-desc kr-b1">{data.result}</p>
         </li>
         <li
           className={`insight__content ${
@@ -95,7 +97,7 @@ export default function ProjectInsight() {
           }`}
         >
           <div className="insight__content-title kr-t1">회고</div>
-          <p className="insight__content-desc kr-b1">내용내용</p>
+          <p className="insight__content-desc kr-b1">{data.learning}</p>
         </li>
       </ul>
     </section>

@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+
 import { useEffect } from "react";
 
 import { gsap } from "gsap";
-
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,33 +17,23 @@ export default function Projects() {
   useEffect(() => {
     const projectTl = gsap.timeline();
 
-    projectTl
-      .from(".projects__title", {
-        xPercent: -50,
-        opacity: 0,
-        duration: 0.5,
-      })
-      .from(
-        ".projects__categories",
-        {
-          xPercent: -50,
-          opacity: 0,
-          duration: 0.5,
-        },
-        ">"
-      );
+    projectTl.from(".projects__title", {
+      opacity: 0,
+      scale: 0,
+      duration: 0.5,
+    });
 
     gsap.fromTo(
       ".projects__items",
       {
-        yPercent: 50,
+        yPercent: 20,
         autoAlpha: 0,
       },
       {
         yPercent: 0,
         autoAlpha: 1,
-        duration: 2,
-        ease: "bounce.out",
+        duration: 1,
+        ease: "bounce",
         scrollTrigger: {
           trigger: ".projects",
           start: "top top",
@@ -57,15 +48,14 @@ export default function Projects() {
         <i>all </i>
         projects
       </h2>
-      <ul className="projects__categories">
-        <li className="projects__category">web</li>
-        <li className="projects__category">shop</li>
-        <li className="projects__category">admin</li>
-      </ul>
-      <ul className="projects__items">
+      <div className="projects__items">
         {projects.map((project, i) => {
           return (
-            <li key={i} className="projects__item">
+            <Link
+              href={`/projects/${project.id}`}
+              className="projects__item"
+              key={i}
+            >
               <div className="projects__thumb">
                 <Image src={project.thumbnail} alt="" />
               </div>
@@ -79,10 +69,10 @@ export default function Projects() {
                   })}
                 </ul>
               </article>
-            </li>
+            </Link>
           );
         })}
-      </ul>
+      </div>
     </section>
   );
 }

@@ -1,12 +1,33 @@
 import { StaticImageData } from "next/image";
 
 import derma42Thumb from "#/img_thumb_derma42.jpg";
+import derma42Mockup from "#/img_mockup_derma42.png";
 import younglimThumb from "#/img_thumb_younglim.jpg";
+import younglimMockup from "#/img_mockup_younglim.png";
 import apfelThumb from "#/img_thumb_apfel.jpg";
+import apfelMockup from "#/img_mockup_apfel.png";
 import ooosThumb from "#/img_thumb_ooos.jpg";
+import ooosMockup from "#/img_mockup_ooos.png";
 import highendtaxThumb from "#/img_thumb_highendtax.jpg";
+import highendtaxMockup from "#/img_mockup_highendtax.png";
 import widmiceThumb from "#/img_thumb_widmice.jpg";
+import widmiceMockup from "#/img_mockup_widmice.png";
 import adlerThumb from "#/img_thumb_adler.jpg";
+import adlerMockup from "#/img_mockup_adler.png";
+import HtmlIcon from "#/ic_html.svg";
+import CssIcon from "#/ic_css.svg";
+import JsIcon from "#/ic_js.svg";
+import ReactIcon from "#/ic_react.svg";
+import ScssIcon from "#/ic_sass.svg";
+import JqueryIcon from "#/ic_jquery.svg";
+import JiraIcon from "#/ic_jira.svg";
+import FigmaIcon from "#/ic_figma.svg";
+import NextjsIcon from "#/ic_next.js.svg";
+import GsapIcon from "#/ic_gsap.svg";
+import Cafe24Icon from "#/ic_cafe24.svg";
+import PhpIcon from "#/ic_php.png";
+import MuiIcon from "#/ic_mui.png";
+import TailwindIcon from "#/ic_tailwind.png";
 
 type Skill = {
   name: string;
@@ -23,7 +44,7 @@ type Project = {
   name: string;
   enName: string;
   url: string;
-  mockup: { pc: string; mo: string };
+  mockup: StaticImageData;
   overview: string;
   period: string;
   role: string[];
@@ -34,6 +55,10 @@ type Project = {
   learning: string;
 };
 
+export type ProjectProps = {
+  data: Project;
+};
+
 export const projects: Project[] = [
   {
     id: 1,
@@ -41,10 +66,7 @@ export const projects: Project[] = [
     enName: "derma42",
     url: "https://www.derma42.com",
     thumbnail: derma42Thumb,
-    mockup: {
-      pc: "../../../public/img_pc_derma42.jpg",
-      mo: "../../../public/img_mo_derma42.jpg",
-    },
+    mockup: derma42Mockup,
     overview:
       "derma42는 피부 케어 중심의 코스메틱 브랜드로 Cafe24 기반 쇼핑몰을 초기 구축한 프로젝트입니다. 전체 페이지 퍼블리싱과 메인·브랜드 페이지 스크롤 인터랙션을 구현했습니다.",
     period: "2025.11 ~ 2025.12",
@@ -55,10 +77,10 @@ export const projects: Project[] = [
       "고객사 커뮤니케이션 및 수정 대응",
     ],
     skills: [
-      { name: "Cafe24", icon: "" },
-      { name: "jQuery", icon: "" },
-      { name: "GSAP", icon: "" },
-      { name: "Figma", icon: "" },
+      { name: "Cafe24", icon: Cafe24Icon },
+      { name: "jQuery", icon: JqueryIcon },
+      { name: "GSAP", icon: GsapIcon },
+      { name: "Figma", icon: FigmaIcon },
     ],
     built: [
       {
@@ -91,10 +113,7 @@ export const projects: Project[] = [
     enName: "younglim",
     url: "https://www.ylchem.co.kr",
     thumbnail: younglimThumb,
-    mockup: {
-      pc: "../../../public/img_pc_younglim.jpg",
-      mo: "../../../public/img_mo_younglim.jpg",
-    },
+    mockup: younglimMockup,
     overview:
       "영림프라임창호는 프리미엄 창호 브랜드로, 웹사이트 리뉴얼 프로젝트에서 전체 페이지 퍼블리싱과 반응형 UI 구현, 스크롤 인터랙션 설계, 빌더를 활용한 관리자 페이지 제작을 수행했습니다.",
     period: "2025.07 ~ 2025.10",
@@ -105,10 +124,10 @@ export const projects: Project[] = [
       "고객사 커뮤니케이션 및 수정 대응",
     ],
     skills: [
-      { name: "PHP", icon: "" },
-      { name: "MySQL", icon: "" },
-      { name: "GSAP", icon: "" },
-      { name: "Figma", icon: "" },
+      { name: "PHP", icon: PhpIcon },
+      // { name: "MySQL", icon: "" },
+      { name: "GSAP", icon: GsapIcon },
+      { name: "Figma", icon: FigmaIcon },
     ],
     built: [
       {
@@ -146,10 +165,7 @@ export const projects: Project[] = [
     enName: "apfel",
     url: "https://www.apfelcosmetics.co.kr",
     thumbnail: apfelThumb,
-    mockup: {
-      pc: "../../../public/img_pc_apfel.jpg",
-      mo: "../../../public/img_mo_apfel.jpg",
-    },
+    mockup: apfelMockup,
     overview:
       "apfel은 프리미엄 스킨케어 브랜드로 Cafe24 기반 쇼핑몰을 초기 구축한 프로젝트입니다. 전체 페이지 퍼블리싱과 메인·브랜드 페이지 스크롤 인터랙션을 구현했습니다.",
     period: "2025.04 ~ 2025.05",
@@ -160,10 +176,10 @@ export const projects: Project[] = [
       "고객사 커뮤니케이션 및 수정 대응",
     ],
     skills: [
-      { name: "Cafe24", icon: "" },
-      { name: "jQuery", icon: "" },
-      { name: "GSAP", icon: "" },
-      { name: "Figma", icon: "" },
+      { name: "Cafe24", icon: Cafe24Icon },
+      { name: "jQuery", icon: JqueryIcon },
+      { name: "GSAP", icon: GsapIcon },
+      { name: "Figma", icon: FigmaIcon },
     ],
     built: [
       {
@@ -200,10 +216,7 @@ export const projects: Project[] = [
     enName: "ooos",
     url: "https://www.ooosdesign.com",
     thumbnail: ooosThumb,
-    mockup: {
-      pc: "../../../public/img_pc_ooos.jpg",
-      mo: "../../../public/img_mo_ooos.jpg",
-    },
+    mockup: ooosMockup,
     overview:
       "오오오에스 웹사이트 리뉴얼은 자사 브랜드 아이덴티티 강화를 위해 진행된 프로젝트입니다. Next.js 기반으로 Tailwind CSS를 활용해 전체 페이지 디자인과 인터랙션을 구현했습니다.",
     period: "2025.05 ~ 2025.06",
@@ -213,11 +226,11 @@ export const projects: Project[] = [
       "스크롤 기반 인터랙션 구현",
     ],
     skills: [
-      { name: "Next.js", icon: "" },
-      { name: "React", icon: "" },
-      { name: "Tailwind CSS", icon: "" },
-      { name: "GSAP", icon: "" },
-      { name: "Figma", icon: "" },
+      { name: "Next.js", icon: NextjsIcon },
+      { name: "React", icon: ReactIcon },
+      { name: "Tailwind", icon: TailwindIcon },
+      { name: "GSAP", icon: GsapIcon },
+      { name: "Figma", icon: FigmaIcon },
     ],
     built: [
       {
@@ -246,10 +259,7 @@ export const projects: Project[] = [
     enName: "highendtax",
     url: "https://www.highendtax.co.kr",
     thumbnail: highendtaxThumb,
-    mockup: {
-      pc: "../../../public/img_pc_highend.jpg",
-      mo: "../../../public/img_mo_highend.jpg",
-    },
+    mockup: highendtaxMockup,
     overview:
       "하이엔드택스는 세무 서비스를 지원하는 회사로, 기존 웹사이트를 새롭게 리뉴얼한 프로젝트입니다. Next.js 기반으로 프로젝트 초기 구축과 퍼블리싱을 진행했습니다.",
     period: "2025.03 ~ 2025.04",
@@ -259,11 +269,11 @@ export const projects: Project[] = [
       "스크롤 기반 인터랙션 구현",
     ],
     skills: [
-      { name: "Next.js", icon: "" },
-      { name: "React", icon: "" },
-      { name: "Tailwind CSS", icon: "" },
-      { name: "GSAP", icon: "" },
-      { name: "Figma", icon: "" },
+      { name: "Next.js", icon: NextjsIcon },
+      { name: "React", icon: ReactIcon },
+      { name: "Tailwind", icon: TailwindIcon },
+      { name: "GSAP", icon: GsapIcon },
+      { name: "Figma", icon: FigmaIcon },
     ],
     built: [
       {
@@ -288,10 +298,7 @@ export const projects: Project[] = [
     enName: "widmice",
     url: "https://www.widmice.com",
     thumbnail: widmiceThumb,
-    mockup: {
-      pc: "../../../public/img_pc_widmice.jpg",
-      mo: "../../../public/img_mo_widmice.jpg",
-    },
+    mockup: widmiceMockup,
     overview:
       "위드마이스는 MICE(기업 행사·컨벤션) 전문 업체로, 다국어(KR·EN) 지원과 사용자 경험 강화를 위해 웹사이트를 구축한 프로젝트입니다. Next.js 기반으로 전체 페이지 퍼블리싱과 스크롤 기반 인터랙션을 구현했습니다.",
     period: "2025.02 ~ 2025.03",
@@ -302,11 +309,11 @@ export const projects: Project[] = [
       "스크롤 기반 인터랙션 구현",
     ],
     skills: [
-      { name: "Next.js", icon: "" },
-      { name: "React", icon: "" },
-      { name: "Tailwind CSS", icon: "" },
-      { name: "GSAP", icon: "" },
-      { name: "Figma", icon: "" },
+      { name: "Next.js", icon: NextjsIcon },
+      { name: "React", icon: ReactIcon },
+      { name: "Tailwind", icon: TailwindIcon },
+      { name: "GSAP", icon: GsapIcon },
+      { name: "Figma", icon: FigmaIcon },
     ],
     built: [
       {
@@ -335,19 +342,16 @@ export const projects: Project[] = [
     enName: "adler",
     url: "https://www.adler3d.com",
     thumbnail: adlerThumb,
-    mockup: {
-      pc: "../../../public/img_pc_adler.jpg",
-      mo: "../../../public/img_mo_adler.jpg",
-    },
+    mockup: adlerMockup,
     overview: "",
     period: "2022.06 ~ 2023.08",
     role: ["", "", ""],
     skills: [
-      { name: "Next.js", icon: "" },
-      { name: "React", icon: "" },
-      { name: "MUI", icon: "" },
-      { name: "Figma", icon: "" },
-      { name: "Jira", icon: "" },
+      { name: "Next.js", icon: NextjsIcon },
+      { name: "React", icon: ReactIcon },
+      { name: "MUI", icon: MuiIcon },
+      { name: "Figma", icon: FigmaIcon },
+      { name: "Jira", icon: JiraIcon },
     ],
     built: [
       {
