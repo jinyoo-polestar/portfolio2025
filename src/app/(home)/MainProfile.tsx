@@ -14,33 +14,31 @@ import { works } from "@/data/works";
 
 export default function MainProfile() {
   useEffect(() => {
-    gsap.set(".profile__content", { autoAlpha: 0 });
-
-    gsap.from([".profile__header h2", ".profile__header a"], {
-      autoAlpha: 0,
-      fontSize: 0,
+    const profileTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".profile",
-        start: "top center",
-        end: "top top",
-        scrub: 2,
+        start: "top top",
+        pin: true,
       },
     });
-    gsap.fromTo(
-      ".profile__content",
-      {
+    gsap.set(".profile__content", { autoAlpha: 0 });
+
+    profileTl
+      .from(".profile__header", {
         autoAlpha: 0,
-      },
-      {
-        autoAlpha: 1,
+        scale: 0,
         duration: 0.5,
-        delay: 0.25,
-        scrollTrigger: {
-          trigger: ".profile",
-          start: "top top",
+      })
+      .fromTo(
+        ".profile__content",
+        {
+          autoAlpha: 0,
         },
-      }
-    );
+        {
+          autoAlpha: 1,
+          duration: 0.5,
+        }
+      );
   });
 
   return (

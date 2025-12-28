@@ -15,6 +15,8 @@ export default function ProjectInsight({ data }: ProjectProps) {
       scrollTrigger: {
         trigger: ".insight",
         start: "top top",
+        end: "bottom top",
+        pin: true,
       },
     });
 

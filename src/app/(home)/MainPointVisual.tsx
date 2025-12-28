@@ -43,6 +43,13 @@ export default function MainPointVisual() {
         },
         "<"
       );
+
+    ScrollTrigger.create({
+      trigger: ".point-visual",
+      start: "top top",
+      end: "bottom top",
+      pin: true,
+    });
   });
 
   return (
@@ -71,7 +78,7 @@ export default function MainPointVisual() {
         <div className="point-visual__item point-visual__item--desc">
           <h3 className="point-visual__title en-b1">body 1</h3>
           <p className="point-visual__text kr-b1">
-            프로젝트의 전반적인 흐름을 이해하며 <b>책임감 있게 작업</b>합니다.{" "}
+            프로젝트의 전반적인 흐름을 이해하며 <b>책임감 있게 작업</b>합니다.
             <b>협업과 커뮤니케이션을 중시</b>하고, 기획·디자인·개발 단계
             전반에서 최적의 경험을 만들어갑니다.
           </p>

@@ -19,6 +19,7 @@ export default function ProjectOverview({ data }: ProjectProps) {
         trigger: ".overview",
         start: "top top",
         end: "bottom top",
+        pin: true,
       },
     });
 

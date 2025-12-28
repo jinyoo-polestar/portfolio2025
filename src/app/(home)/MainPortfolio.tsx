@@ -16,6 +16,7 @@ export default function MainPortfolio() {
         trigger: ".portfolio",
         start: "top top",
         end: "bottom top",
+        pin: true,
       },
     });
 
@@ -23,7 +24,7 @@ export default function MainPortfolio() {
       .fromTo(
         ".portfolio__title",
         { autoAlpha: 0 },
-        { autoAlpha: 1, duration: 0.25 }
+        { autoAlpha: 0.08, duration: 0.25 }
       )
       .fromTo(
         ".portfolio__cards",
@@ -32,8 +33,9 @@ export default function MainPortfolio() {
         },
         {
           autoAlpha: 1,
+          duration: 0.5,
         },
-        "+=0.5"
+        "<"
       )
       .fromTo(
         ".portfolio__title",

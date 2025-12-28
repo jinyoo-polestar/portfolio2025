@@ -14,24 +14,15 @@ export default function MainIntro() {
       scrollTrigger: {
         trigger: ".main-intro",
         start: "top top",
+        pin: true,
       },
     });
 
-    mainIntroTl
-      .from(".main-intro__text", {
-        autoAlpha: 0,
-        fontSize: 0,
-        duration: 1.5,
-      })
-      .to(
-        ".main-intro__text",
-        {
-          autoAlpha: 0,
-          fontSize: 0,
-          duration: 1,
-        },
-        "+=2"
-      );
+    mainIntroTl.from(".main-intro__text", {
+      autoAlpha: 0,
+      fontSize: 0,
+      duration: 0.75,
+    });
   });
 
   return (

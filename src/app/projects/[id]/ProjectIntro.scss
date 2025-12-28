@@ -7,7 +7,11 @@
   height: 100vh;
   padding: 16vh 5% 0;
   box-sizing: border-box;
-  background: $color-black;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 51.44%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
   overflow: hidden;
 
   &__title {
