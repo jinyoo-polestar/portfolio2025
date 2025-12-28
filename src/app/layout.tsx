@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrambleText from "@/components/ScrambleText";
+import ScrollSmootherProvider from "@/components/ScrollSmoother";
 
 import "../styles/global.scss";
 
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="kr">
+    <html lang="ko">
       <head>
         <link
           rel="stylesheet"
@@ -25,10 +26,12 @@ export default function RootLayout({
         ></link>
       </head>
       <body>
-        <Header />
-        <ScrambleText />
-        {children}
-        <Footer />
+        <ScrollSmootherProvider>
+          <Header />
+          <ScrambleText />
+          {children}
+          <Footer />
+        </ScrollSmootherProvider>
       </body>
     </html>
   );
