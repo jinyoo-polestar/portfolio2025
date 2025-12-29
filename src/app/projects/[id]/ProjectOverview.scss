@@ -75,10 +75,15 @@
 
     &__contents {
       flex-wrap: nowrap;
+
+      .swiper-wrapper {
+        display: flex;
+      }
     }
 
     &__content {
       width: 100%;
+      flex: none;
     }
   }
 }

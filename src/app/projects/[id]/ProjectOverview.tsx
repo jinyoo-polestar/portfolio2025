@@ -5,8 +5,11 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 
 import { ProjectProps } from "@/data/projects";
+import "swiper/css";
 
 import "./ProjectOverview.scss";
 
@@ -28,7 +31,7 @@ export default function ProjectOverview({ data }: ProjectProps) {
       { autoAlpha: 0 },
       { autoAlpha: 1, duration: 0.75, stagger: 0.75 }
     );
-  });
+  }, []);
 
   return (
     <section className="overview">
@@ -36,13 +39,28 @@ export default function ProjectOverview({ data }: ProjectProps) {
         <h3 className="overview__title en-t1">overview</h3>
         <p className="overview__desc kr-b1">{data.overview}</p>
       </div>
-      <ul className="overview__contents">
-        <li className="overview__content">
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={1}
+        centeredSlides={true}
+        grabCursor={true}
+        modules={[Autoplay]}
+        autoplay={{ delay: 3000 }}
+        className="overview__contents"
+        enabled={true}
+        breakpoints={{
+          1025: {
+            enabled: false,
+            autoplay: false,
+          },
+        }}
+      >
+        <SwiperSlide className="overview__content">
           <span className="overview__content-num en-b1">01</span>
           <span className="overview__content-title kr-s1">기간</span>
           <span className="overview__content-text kr-b1">{data.period}</span>
-        </li>
-        <li className="overview__content">
+        </SwiperSlide>
+        <SwiperSlide className="overview__content">
           <span className="overview__content-num en-b1">02</span>
           <span className="overview__content-title kr-s1">역할(기여도)</span>
           <ul className="overview__content-text kr-b1">
@@ -50,8 +68,8 @@ export default function ProjectOverview({ data }: ProjectProps) {
               return <li key={i}>{role}</li>;
             })}
           </ul>
-        </li>
-        <li className="overview__content">
+        </SwiperSlide>
+        <SwiperSlide className="overview__content">
           <span className="overview__content-num en-b1">03</span>
           <span className="overview__content-title kr-s1">스킬</span>
           <ul className="overview__content-icons">
@@ -63,8 +81,8 @@ export default function ProjectOverview({ data }: ProjectProps) {
               );
             })}
           </ul>
-        </li>
-      </ul>
+        </SwiperSlide>
+      </Swiper>
     </section>
   );
 }

@@ -65,7 +65,10 @@ export default function ProjectInsight({ data }: ProjectProps) {
 
   return (
     <section className="insight">
-      <h3 className="insight__title en-t1">project insights</h3>
+      <h3 className="insight__title en-t1">
+        <span>project </span>
+        <span>insights</span>
+      </h3>
       <div className="insight__toggle-box en-b1">
         <span
           className={`insight__toggle ${
@@ -88,15 +91,17 @@ export default function ProjectInsight({ data }: ProjectProps) {
         <li
           className={`insight__content ${
             toggleState === 0 ? "insight__content-active" : ""
-          }`}
+          } insight__content--left`}
         >
-          <div className="insight__content-title kr-t1">결과</div>
+          <div className="insight__content-title insight__content-title--left kr-t1">
+            결과
+          </div>
           <p className="insight__content-desc kr-b1">{data.result}</p>
         </li>
         <li
           className={`insight__content ${
             toggleState === 1 ? "insight__content-active" : ""
-          }`}
+          } insight__content--right`}
         >
           <div className="insight__content-title kr-t1">회고</div>
           <p className="insight__content-desc kr-b1">{data.learning}</p>
