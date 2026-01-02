@@ -26,9 +26,9 @@ export default function RootLayout({
         ></link>
       </head>
       <body>
+        <Header />
+        <ScrambleText />
         <ScrollSmootherProvider>
-          <Header />
-          <ScrambleText />
           {children}
           <Footer />
         </ScrollSmootherProvider>

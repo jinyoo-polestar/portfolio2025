@@ -34,9 +34,12 @@ export default function ProjectInsight({ data }: ProjectProps) {
         [".insight__toggle-box", ".insight__contents"],
         {
           autoAlpha: 0,
+          yPercent: 50,
         },
         {
           autoAlpha: 1,
+          yPercent: 0,
+          ease: "power3.out",
         }
       );
 
@@ -46,19 +49,23 @@ export default function ProjectInsight({ data }: ProjectProps) {
   }, []);
 
   useEffect(() => {
-    gsap.to(".insight__content", {
-      autoAlpha: 0,
-    });
+    const tl = gsap.timeline();
 
-    gsap.fromTo(
+    tl.to(".insight__content:not(.insight__content-active)", {
+      yPercent: -50,
+      autoAlpha: 0,
+      duration: 0.5,
+    }).fromTo(
       ".insight__content-active",
       {
         autoAlpha: 0,
         yPercent: 50,
+        duration: 2,
       },
       {
         autoAlpha: 1,
         yPercent: 0,
+        duration: 0.5,
       }
     );
   }, [toggleState]);

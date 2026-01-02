@@ -167,7 +167,7 @@ $font-weight-extrabold: 800;
   @extend %kr-base;
   // font-size: $font-size-40;
   font-size: clamp(1rem, 2.8vw, $font-size-40);
-  line-height: $line-height-100;
+  line-height: $line-height-130;
   font-weight: $font-weight-bold;
 }
 
@@ -175,7 +175,7 @@ $font-weight-extrabold: 800;
   @extend %kr-base;
   // font-size: $font-size-32;
   font-size: clamp(0.5rem, 2.2vw, $font-size-32);
-  line-height: $line-height-100;
+  line-height: $line-height-130;
   font-weight: $font-weight-bold;
 }
 

@@ -9,8 +9,7 @@
   overflow: hidden;
 
   &__img {
-    position: fixed;
-    display: none;
+    position: absolute;
     width: 40%;
     height: auto;
     left: 50%;
@@ -79,7 +78,7 @@
   }
 
   &__list {
-    min-width: 300vw;
+    min-width: 700vw;
     min-height: 100vh;
   }
 
@@ -124,5 +123,15 @@
 
   .dummy_item {
     min-width: 70vw;
+  }
+
+  @media (max-width: 1024px) {
+    &__img {
+      width: 80%;
+    }
+
+    &__header-char {
+      font-size: clamp(2rem, 15vw, $font-size-84);
+    }
   }
 }

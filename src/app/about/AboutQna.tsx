@@ -14,7 +14,9 @@ import "./AboutQna.scss";
 
 export default function AboutQna() {
   useEffect(() => {
-    const tl = gsap.timeline({
+    const qnaItems = gsap.utils.toArray<HTMLElement>(".qna__item");
+
+    const qnaTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".qna",
         start: "top top",
@@ -24,21 +26,35 @@ export default function AboutQna() {
       },
     });
 
-    tl.from(".qna__header span", {
+    qnaTl.from(".qna__header span", {
       scale: 0,
-    }).fromTo(
-      ".qna__item",
-      {
-        autoAlpha: 0,
-        yPercent: 100,
-      },
-      {
-        autoAlpha: 1,
-        yPercent: 0,
-        stagger: 1,
-      }
-    );
-  });
+    });
+
+    qnaItems.forEach((item, i) => {
+      qnaTl.fromTo(
+        item,
+        {
+          autoAlpha: 0,
+          yPercent: 100,
+        },
+        {
+          autoAlpha: 1,
+          yPercent: 0,
+          duration: 0.5,
+          onComplete: () => {
+            if (i > 0) {
+              gsap.to(qnaItems[i - 1], { autoAlpha: 0 });
+            }
+          },
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      gsap.killTweensOf("*");
+    };
+  }, []);
 
   return (
     <section className="qna">

@@ -20,7 +20,7 @@ export default function AboutVisual() {
     if (!aboutSection || !aboutInner) return;
 
     const scrollTween = gsap.to(aboutInner, {
-      xPercent: -300,
+      x: -aboutInner.scrollWidth,
       ease: "none",
       scrollTrigger: {
         pin: aboutSection,
@@ -30,16 +30,7 @@ export default function AboutVisual() {
       },
     });
 
-    const firstHeadline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".aboutvisual__headline--first",
-        start: "left center",
-        end: "right 50%",
-        containerAnimation: scrollTween,
-      },
-    });
-
-    firstHeadline.fromTo(
+    gsap.fromTo(
       ".aboutvisual__headline--first",
       { autoAlpha: 0 },
       {
@@ -61,53 +52,64 @@ export default function AboutVisual() {
       const chars = split.chars.filter((char) => char.parentNode === word);
 
       loopTl
-        .from(chars, {
-          yPercent: 100,
-          autoAlpha: 0,
-          stagger: 0.05,
-        })
+        .fromTo(
+          chars,
+          {
+            yPercent: 100 - i * 100,
+            autoAlpha: 0,
+          },
+          {
+            yPercent: -100 * i,
+            autoAlpha: 1,
+            stagger: 0.05,
+          }
+        )
         .to({}, { duration: 3 })
         .to(chars, {
-          yPercent: -100,
+          yPercent: -100 * (i + 1),
           autoAlpha: 0,
+          stagger: 0.05,
         });
     });
 
-    const secondHeadline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".aboutvisual__headline--second",
-        start: "left center",
-        containerAnimation: scrollTween,
-      },
-    });
+    gsap.utils
+      .toArray<HTMLElement>(".aboutvisual__headline--second span")
+      .forEach((item) => {
+        gsap.fromTo(
+          item,
+          {
+            autoAlpha: 0,
+            y: gsap.utils.random(-80, 80),
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            ease: "power3.out",
+            duration: 0.5,
+            scrollTrigger: {
+              trigger: item,
+              containerAnimation: scrollTween,
+              start: "left center+=10%",
+            },
+          }
+        );
+      });
 
-    secondHeadline.fromTo(
-      ".aboutvisual__headline--second span",
-      {
-        autoAlpha: 0,
-        y: () => gsap.utils.random([-200, 200]),
-      },
-      {
-        autoAlpha: 1,
-        y: 0,
-        stagger: 0.5,
-        ease: "bounce",
-      }
-    );
-  });
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      gsap.killTweensOf("*");
+    };
+  }, []);
 
   return (
     <section className="aboutvisual">
       <div className="aboutvisual__inner">
-        <div className="aboutvisual__headline aboutvisual__headline--empty"></div>
         <div className="aboutvisual__headline aboutvisual__headline--first">
           <div className="aboutvisual__title aboutvisual__title--first">
             <div className="en-h2-italic aboutvisual__keyword-box">
               <div className="aboutvisual__keyword-inner">
-                <div className="hidden">core</div>
                 <div className="aboutvisual__keyword">all</div>
                 <div className="aboutvisual__keyword">base</div>
-                <div className="aboutvisual__keyword">real</div>
               </div>
             </div>
             <span className="en-h2">- about</span>

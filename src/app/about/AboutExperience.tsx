@@ -23,65 +23,111 @@ export default function AboutExperience() {
     const shapes = gsap.utils.toArray(".experience__header-char");
     const wrapRotation = gsap.utils.wrap(-90, 90);
     const radius = 400;
-    const letterPos = [-36, -24, -12, 0, 12, 24, 36, 48, 60, 72];
 
-    const experienceTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".experience__header",
-        start: "top top",
-        end: "bottom top",
-        pin: true,
-        pinSpacing: false,
-        toggleActions: "play reverse play reverse",
-      },
-    });
+    const mm = gsap.matchMedia();
 
-    gsap.set(shapes, {
-      transformOrigin: `50% 50% ${-radius}px`,
-      rotationY: (i) => letterPos[i],
-    });
+    mm.add("(min-width:1025px)", () => {
+      const letterPos = [-36, -24, -12, 0, 12, 24, 36, 48, 60, 72];
 
-    experienceTl
-      .fromTo(
-        ".experience__img",
+      gsap.set(shapes, {
+        transformOrigin: `50% 50% ${-radius}px`,
+        rotationY: (i) => letterPos[i],
+      });
+
+      gsap.fromTo(
+        shapes,
         {
-          display: "none",
-          autoAlpha: 0,
+          rotationY: (i) => letterPos[i] + initialRotationOffset,
         },
         {
-          display: "block",
-          autoAlpha: 0.7,
-        }
-      )
-      .fromTo(
-        [".experience__header-text", ".experience__header-inner"],
-        {
-          autoAlpha: 0,
-        },
-        {
-          autoAlpha: 1,
-          stagger: 0.25,
+          rotationY: `-=${360}`,
+          modifiers: {
+            rotationY: (value) => wrapRotation(parseFloat(value)) + "deg",
+          },
+          duration: 10,
+          ease: "none",
+          repeat: -1,
         }
       );
+    });
+
+    mm.add("(max-width:1024px)", () => {
+      const letterPos = [-18, -12, -6, 0, 6, 11, 16, 22, 29, 35];
+
+      gsap.set(shapes, {
+        transformOrigin: `50% 50% ${-radius}px`,
+        rotationY: (i) => letterPos[i],
+      });
+
+      gsap.fromTo(
+        shapes,
+        {
+          rotationY: (i) => letterPos[i] + initialRotationOffset,
+        },
+        {
+          rotationY: `-=${360}`,
+          modifiers: {
+            rotationY: (value) => wrapRotation(parseFloat(value)) + "deg",
+          },
+          duration: 10,
+          ease: "none",
+          repeat: -1,
+        }
+      );
+    });
+
+    ScrollTrigger.create({
+      trigger: ".experience__header",
+      start: "top top",
+      end: "bottom top",
+      pin: true,
+      pinSpacing: false,
+    });
+
+    ScrollTrigger.create({
+      trigger: ".experience__header",
+      start: "top top",
+      endTrigger: ".experience",
+      end: "bottom top",
+      pin: ".experience__img",
+      pinSpacing: false,
+    });
 
     gsap.fromTo(
-      shapes,
+      ".experience__img",
       {
-        rotationY: (i) => letterPos[i] + initialRotationOffset,
+        autoAlpha: 0,
       },
       {
-        rotationY: `-=${360}`,
-        modifiers: {
-          rotationY: (value) => wrapRotation(parseFloat(value)) + "deg",
-        },
-        duration: 10,
+        autoAlpha: 0.7,
         ease: "none",
-        repeat: -1,
+        scrollTrigger: {
+          trigger: ".experience__header",
+          start: "top top",
+          endTrigger: ".experience",
+          end: "bottom top",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      [".experience__header-text", ".experience__header-inner"],
+      {
+        autoAlpha: 0,
+      },
+      {
+        autoAlpha: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".experience__header",
+          start: "top top",
+          end: "bottom top",
+        },
       }
     );
 
     gsap.to(".experience__img", {
-      scale: 2,
+      scale: 1.8,
       xPercent: -100,
       rotate: 90,
       scrollTrigger: {
@@ -110,7 +156,7 @@ export default function AboutExperience() {
         end: "bottom top",
         pin: true,
         pinSpacing: true,
-        scrub: 2,
+        scrub: 5,
       },
     });
 
@@ -120,39 +166,27 @@ export default function AboutExperience() {
         { rotationY: -60, z: 100 },
         {
           rotationY: 60,
-          x: -1000,
           scrollTrigger: {
             trigger: item.closest(".experience__item"),
             containerAnimation: experienceListTl,
             start: "left center",
             end: "right center",
-            scrub: true,
+            scrub: 2,
           },
         }
       );
     });
 
-    gsap.fromTo(
-      ".experience__img",
-      {
-        autoAlpha: 0.7,
-      },
-      {
-        autoAlpha: 0,
-        scrollTrigger: {
-          trigger: ".experience__item:last-child",
-          containerAnimation: experienceListTl,
-          start: "left left",
-          scrub: true,
-        },
-      }
-    );
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      gsap.killTweensOf("*");
+    };
   }, []);
 
   return (
     <section className="experience">
-      <div className="experience__img">
-        <Image src={flowerImg} alt="" />
+      <div className="experience__img" data-speed="0">
+        <Image src={flowerImg} alt="" fill priority />
       </div>
       <div className="experience__header">
         <span className="experience__header-text en-b2">my journey</span>

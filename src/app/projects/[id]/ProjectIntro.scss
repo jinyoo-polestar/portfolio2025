@@ -121,7 +121,7 @@
     width: 90%;
     display: flex;
     justify-content: space-between;
-    color: $color-white;
+    color: $color-gray-300;
   }
 
   @media (max-width: 1024px) {
@@ -132,12 +132,18 @@
       transform: translateX(50%);
     }
 
+    &__title {
+      text-align: left;
+    }
+
     &__title-box {
+      align-items: flex-start;
       gap: $space-xl;
     }
 
     &__img {
-      width: 100%;
+      width: 180%;
+      right: 70%;
       margin-top: $space-xl;
 
       &-pc {
@@ -153,6 +159,12 @@
         aspect-ratio: 1/2;
         z-index: 3;
       }
+    }
+
+    &__text {
+      bottom: $space-ml;
+      justify-content: center;
+      gap: $space-2xs;
     }
   }
 }
