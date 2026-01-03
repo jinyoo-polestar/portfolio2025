@@ -1,59 +1,67 @@
 "use client";
 
+import { useRef } from "react";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import { useEffect } from "react";
+import { useGSAP } from "@gsap/react";
 
 import "./MainPointVisual.scss";
 
+gsap.registerPlugin(useGSAP);
+
 export default function MainPointVisual() {
-  useEffect(() => {
-    gsap.set(".point-visual__item-intro", { xPercent: -150 });
+  const container = useRef<HTMLElement | null>(null);
 
-    ScrollTrigger.create({
-      trigger: ".point-visual",
-      start: "top top",
-      end: "bottom top",
-      pin: true,
-    });
+  useGSAP(
+    () => {
+      gsap.set(".point-visual__item-intro", { xPercent: -150 });
 
-    const pvTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".point-visual",
-        start: "top center",
-        end: "top top",
-        scrub: true,
-      },
-    });
-    pvTl
-      .fromTo(
-        [".point-visual__item--intro", ".point-visual__item--code"],
-        {
-          xPercent: -300,
-          autoAlpha: 0,
+      ScrollTrigger.create({
+        trigger: container.current,
+        start: "top top",
+        end: "bottom top",
+        pin: true,
+      });
+
+      const pvTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top center",
+          end: "top top",
+          scrub: true,
         },
-        {
-          xPercent: 0,
-          autoAlpha: 1,
-        }
-      )
-      .fromTo(
-        [".point-visual__item--img", ".point-visual__item--desc"],
-        {
-          xPercent: 300,
-          autoAlpha: 0,
-        },
-        {
-          xPercent: 0,
-          autoAlpha: 1,
-        },
-        "<"
-      );
-  });
+      });
+      pvTl
+        .fromTo(
+          [".point-visual__item--intro", ".point-visual__item--code"],
+          {
+            xPercent: -300,
+            autoAlpha: 0,
+          },
+          {
+            xPercent: 0,
+            autoAlpha: 1,
+          }
+        )
+        .fromTo(
+          [".point-visual__item--img", ".point-visual__item--desc"],
+          {
+            xPercent: 300,
+            autoAlpha: 0,
+          },
+          {
+            xPercent: 0,
+            autoAlpha: 1,
+          },
+          "<"
+        );
+    },
+    { scope: container }
+  );
 
   return (
-    <section className="point-visual">
+    <section className="point-visual" ref={container}>
       <div className="point-visual__inner">
         <div className="point-visual__item point-visual__item--intro">
           <h3 className="point-visual__title en-b1">headline 2</h3>

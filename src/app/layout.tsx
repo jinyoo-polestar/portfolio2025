@@ -6,6 +6,7 @@ import ScrambleText from "@/components/ScrambleText";
 import ScrollSmootherProvider from "@/components/ScrollSmoother";
 
 import "../styles/global.scss";
+import "../styles/typography.scss";
 
 export const metadata: Metadata = {
   title: "Portfolio26",

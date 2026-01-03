@@ -1,55 +1,62 @@
-@use "../../styles/font" as *;
 @use "../../styles/variables" as *;
 
 $card-count: 4;
 
 .portfolio {
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100vh;
   overflow: hidden;
   background: $color-black;
 
   &__title {
-    position: relative;
+    position: absolute;
     top: 15vh;
     color: $color-white;
     opacity: 0.08;
     text-transform: uppercase;
     white-space: nowrap;
+
+    &--pc {
+      display: block;
+    }
+
+    &--mo {
+      display: none;
+    }
   }
 
   &__cards-wrapper {
-    // perspective: 7000px;
-    // transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
-    //   rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-    // transform-style: preserve-3d;
+    display: flex;
+    width: 70%;
+    perspective: 5000px;
+    perspective-origin: center;
   }
 
   &__cards {
     position: relative;
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto;
     width: 100%;
-    height: 40%;
-    // transform: translate3d(0%, 0%, 0px) scale3d(1, 1, 1) rotateX(74.6203deg)
-    //   rotateY(0deg) rotateZ(50deg) skew(0deg, 0deg);
-    will-change: transform;
-    // perspective: 800px;
-    // transform-style: preserve-3d;
+    height: auto;
+    aspect-ratio: 44/30;
+    transform: rotateX(70deg) rotateZ(60deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
   }
 
   &__card {
-    // position: absolute;
-    // left: 0;
-    // top: 0;
-    width: 60%;
-    aspect-ratio: 430/290;
+    position: relative;
+    width: 40%;
+    aspect-ratio: 44/30;
     border-radius: 1rem;
-    margin-top: -10vh;
-    margin-bottom: -10vh;
-    perspective: 800px;
+    transform: rotateX(-88deg) rotateY(20deg);
     transform-style: preserve-3d;
+    margin-bottom: -10vh;
+    cursor: pointer;
 
     @for $i from 1 through $card-count {
       &:nth-child(#{$i}) {
@@ -57,36 +64,71 @@ $card-count: 4;
       }
     }
 
-    a {
+    &:hover {
+      transform: translate3d(0, 0, 100px) rotateX(-88deg) rotateY(20deg);
+
+      span {
+        opacity: 1;
+      }
+    }
+
+    &-thumb {
+      position: relative;
       display: inline-block;
       width: 100%;
       height: 100%;
-      transform: rotateY(-60deg);
-      background: gray;
-      opacity: 0.7;
       border-radius: $space-md;
       overflow: hidden;
+    }
+
+    span {
+      position: relative;
+      display: inline-block;
+      left: 102%;
+      bottom: 100%;
+      color: $color-white;
+      z-index: 99;
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: 0;
     }
   }
 }
 
 @media (max-width: 1024px) {
   .portfolio {
-    padding-top: 7.5rem;
-    height: 100vh;
-    overflow: hidden;
+    padding-top: 25vh;
+    height: auto;
 
     &__title {
       top: 7.5rem;
+
+      &--pc {
+        display: none;
+      }
+
+      &--mo {
+        display: block;
+      }
+    }
+
+    &__cards-wrapper {
+      perspective: none;
+      width: 90%;
     }
 
     &__cards {
-      width: 90%;
+      width: 100%;
+      justify-content: flex-start;
+      aspect-ratio: unset;
       margin: 0 auto;
       perspective: none;
       height: auto;
       flex-direction: column;
       gap: $space-xl;
+      transform-style: unset;
+      transform: none;
+      perspective: none;
     }
 
     &__card {
@@ -100,10 +142,17 @@ $card-count: 4;
       a {
         transform: none;
       }
-    }
 
-    @for $i from 1 through $card-count {
-      &:nth-child(#{$i}) {
+      span {
+        opacity: 0;
+      }
+
+      &:hover {
+        transform: none;
+
+        span {
+          opacity: 0;
+        }
       }
     }
   }

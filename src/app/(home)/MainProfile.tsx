@@ -1,51 +1,61 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-import { useEffect } from "react";
-import Image from "next/image";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 import "./MainProfile.scss";
 import { skills } from "@/data/skills";
 import { works } from "@/data/works";
 
 export default function MainProfile() {
-  useEffect(() => {
-    const profileTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".profile",
-        start: "top top",
-        pin: window.innerWidth > 1024 ? "true" : "false",
-      },
-    });
-    gsap.set(".profile__content", { autoAlpha: 0 });
+  const container = useRef<HTMLElement | null>(null);
 
-    profileTl
-      .from(".profile__header", {
-        autoAlpha: 0,
-        scale: 0,
-        duration: 0.5,
-      })
-      .fromTo(
-        ".profile__content",
-        {
-          autoAlpha: 0,
+  useGSAP(
+    () => {
+      const profileTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          pin: window.innerWidth > 1024 ? true : false,
         },
-        {
-          autoAlpha: 1,
+      });
+      gsap.set(".profile__content", { autoAlpha: 0 });
+
+      profileTl
+        .from(".profile__header", {
+          autoAlpha: 0,
+          scale: 0,
           duration: 0.5,
-        }
-      );
-  }, []);
+        })
+        .fromTo(
+          ".profile__content",
+          {
+            autoAlpha: 0,
+          },
+          {
+            autoAlpha: 1,
+            duration: 0.5,
+          }
+        );
+    },
+    { scope: container }
+  );
 
   return (
-    <section className="profile">
+    <section className="profile" ref={container}>
       <div className="profile__header">
         <h2 className="en-h3">about me</h2>
-        <a className="en-b1">view more</a>
+        <Link className="en-b1" href="/about" scroll={false}>
+          view more
+        </Link>
       </div>
       <div className="profile__content">
         <div className="profile__box profile__box--personal">
