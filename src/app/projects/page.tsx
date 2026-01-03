@@ -2,48 +2,55 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
-import { useEffect } from "react";
+import { useRef } from "react";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useGSAP } from "@gsap/react";
 
 import { projects } from "@/data/projects";
+
 import "./projects.scss";
 
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
+
 export default function Projects() {
-  useEffect(() => {
-    const projectTl = gsap.timeline();
+  const container = useRef<HTMLElement | null>(null);
 
-    projectTl.from(".projects__title", {
-      opacity: 0,
-      scale: 0,
-      duration: 0.5,
-    });
+  useGSAP(
+    () => {
+      const projectTl = gsap.timeline();
 
-    gsap.fromTo(
-      ".projects__items",
-      {
-        yPercent: 20,
-        autoAlpha: 0,
-      },
-      {
-        yPercent: 0,
-        autoAlpha: 1,
-        duration: 1,
-        ease: "bounce",
-        scrollTrigger: {
-          trigger: ".projects",
-          start: "top top",
+      projectTl.from(".projects__title", {
+        opacity: 0,
+        scale: 0,
+        duration: 0.5,
+      });
+
+      gsap.fromTo(
+        ".projects__items",
+        {
+          yPercent: 20,
+          autoAlpha: 0,
         },
-      }
-    );
-  });
+        {
+          yPercent: 0,
+          autoAlpha: 1,
+          duration: 1,
+          ease: "bounce",
+          scrollTrigger: {
+            trigger: ".projects",
+            start: "top top",
+          },
+        }
+      );
+    },
+    { scope: container }
+  );
 
   return (
-    <section className="projects">
+    <section className="projects" ref={container}>
       <h2 className="projects__title en-h3 scramble">
         <i>all </i>
         projects
@@ -55,6 +62,7 @@ export default function Projects() {
               href={`/projects/${project.id}`}
               className="projects__item"
               key={i}
+              scroll={true}
             >
               <div className="projects__thumb">
                 <Image src={project.thumbnail} alt="" />

@@ -1,63 +1,64 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 
 import { gsap } from "gsap";
-import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 import { qna } from "@/data/about";
 
-gsap.registerPlugin(ScrollTrigger);
-
 import "./AboutQna.scss";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function AboutQna() {
-  useEffect(() => {
-    const qnaItems = gsap.utils.toArray<HTMLElement>(".qna__item");
+  const container = useRef<HTMLElement | null>(null);
 
-    const qnaTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".qna",
-        start: "top top",
-        end: "bottom top",
-        pin: true,
-        scrub: true,
-      },
-    });
+  useGSAP(
+    () => {
+      const qnaItems = gsap.utils.toArray<HTMLElement>(".qna__item");
 
-    qnaTl.from(".qna__header span", {
-      scale: 0,
-    });
-
-    qnaItems.forEach((item, i) => {
-      qnaTl.fromTo(
-        item,
-        {
-          autoAlpha: 0,
-          yPercent: 100,
+      const qnaTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".qna",
+          start: "top top",
+          end: "bottom top",
+          pin: true,
+          scrub: true,
         },
-        {
-          autoAlpha: 1,
-          yPercent: 0,
-          duration: 0.5,
-          onComplete: () => {
-            if (i > 0) {
-              gsap.to(qnaItems[i - 1], { autoAlpha: 0 });
-            }
-          },
-        }
-      );
-    });
+      });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-      gsap.killTweensOf("*");
-    };
-  }, []);
+      qnaTl.from(".qna__header span", {
+        scale: 0,
+      });
+
+      qnaItems.forEach((item, i) => {
+        qnaTl.fromTo(
+          item,
+          {
+            autoAlpha: 0,
+            yPercent: 100,
+          },
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            duration: 0.5,
+            onComplete: () => {
+              if (i > 0) {
+                gsap.to(qnaItems[i - 1], { autoAlpha: 0 });
+              }
+            },
+          }
+        );
+      });
+    },
+    { scope: container }
+  );
 
   return (
-    <section className="qna">
+    <section className="qna" ref={container}>
       <h2 className="qna__header en-h3">
         <span>q&a</span>
       </h2>

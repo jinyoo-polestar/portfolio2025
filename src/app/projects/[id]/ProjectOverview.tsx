@@ -1,40 +1,47 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
+import { useGSAP } from "@gsap/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 import { ProjectProps } from "@/data/projects";
-import "swiper/css";
 
 import "./ProjectOverview.scss";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 export default function ProjectOverview({ data }: ProjectProps) {
-  useEffect(() => {
-    const overviewTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".overview",
-        start: "top top",
-        end: "bottom top",
-        pin: true,
-      },
-    });
+  const container = useRef<HTMLElement | null>(null);
 
-    overviewTl.fromTo(
-      [".overview__title-box", ".overview__contents"],
-      { autoAlpha: 0 },
-      { autoAlpha: 1, duration: 0.75, stagger: 0.75 }
-    );
-  }, []);
+  useGSAP(
+    () => {
+      const overviewTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".overview",
+          start: "top top",
+          end: "bottom top",
+          pin: true,
+        },
+      });
+
+      overviewTl.fromTo(
+        [".overview__title-box", ".overview__contents"],
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.75, stagger: 0.75 }
+      );
+    },
+    { scope: container }
+  );
 
   return (
-    <section className="overview">
+    <section className="overview" ref={container}>
       <div className="overview__title-box">
         <h3 className="overview__title en-t1">overview</h3>
         <p className="overview__desc kr-b1">{data.overview}</p>

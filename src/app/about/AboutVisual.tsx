@@ -1,108 +1,111 @@
 "use client";
 
+import { useRef } from "react";
+
 import { gsap } from "gsap";
-import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(SplitText);
+gsap.registerPlugin(useGSAP);
 
 import "./AboutVisual.scss";
 
 export default function AboutVisual() {
-  useEffect(() => {
-    const aboutSection = document.querySelector<HTMLElement>(".aboutvisual");
-    const aboutInner = document.querySelector<HTMLElement>(
-      ".aboutvisual__inner"
-    );
+  const container = useRef<HTMLElement | null>(null);
 
-    if (!aboutSection || !aboutInner) return;
+  useGSAP(
+    () => {
+      const aboutSection = document.querySelector<HTMLElement>(".aboutvisual");
+      const aboutInner = document.querySelector<HTMLElement>(
+        ".aboutvisual__inner"
+      );
 
-    const scrollTween = gsap.to(aboutInner, {
-      x: -aboutInner.scrollWidth,
-      ease: "none",
-      scrollTrigger: {
-        pin: aboutSection,
-        trigger: aboutSection,
-        start: "top top",
-        scrub: 2,
-      },
-    });
+      if (!aboutSection || !aboutInner) return;
 
-    gsap.fromTo(
-      ".aboutvisual__headline--first",
-      { autoAlpha: 0 },
-      {
-        autoAlpha: 1,
-      }
-    );
-
-    const split = SplitText.create(".aboutvisual__keyword", {
-      type: "words,chars",
-      autoSplit: true,
-    });
-
-    const loopTl = gsap.timeline({
-      repeat: -1,
-      repeatDelay: 0,
-    });
-
-    split.words.forEach((word, i) => {
-      const chars = split.chars.filter((char) => char.parentNode === word);
-
-      loopTl
-        .fromTo(
-          chars,
-          {
-            yPercent: 100 - i * 100,
-            autoAlpha: 0,
-          },
-          {
-            yPercent: -100 * i,
-            autoAlpha: 1,
-            stagger: 0.05,
-          }
-        )
-        .to({}, { duration: 3 })
-        .to(chars, {
-          yPercent: -100 * (i + 1),
-          autoAlpha: 0,
-          stagger: 0.05,
-        });
-    });
-
-    gsap.utils
-      .toArray<HTMLElement>(".aboutvisual__headline--second span")
-      .forEach((item) => {
-        gsap.fromTo(
-          item,
-          {
-            autoAlpha: 0,
-            y: gsap.utils.random(-80, 80),
-          },
-          {
-            autoAlpha: 1,
-            y: 0,
-            ease: "power3.out",
-            duration: 0.5,
-            scrollTrigger: {
-              trigger: item,
-              containerAnimation: scrollTween,
-              start: "left center+=10%",
-            },
-          }
-        );
+      const scrollTween = gsap.to(aboutInner, {
+        x: -aboutInner.scrollWidth,
+        ease: "none",
+        scrollTrigger: {
+          pin: aboutSection,
+          trigger: aboutSection,
+          start: "top top",
+          scrub: 2,
+        },
       });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-      gsap.killTweensOf("*");
-    };
-  }, []);
+      gsap.fromTo(
+        ".aboutvisual__headline--first",
+        { autoAlpha: 0 },
+        {
+          autoAlpha: 1,
+        }
+      );
+
+      const split = SplitText.create(".aboutvisual__keyword", {
+        type: "words,chars",
+        autoSplit: true,
+      });
+
+      const loopTl = gsap.timeline({
+        repeat: -1,
+        repeatDelay: 0,
+      });
+
+      split.words.forEach((word, i) => {
+        const chars = split.chars.filter((char) => char.parentNode === word);
+
+        loopTl
+          .fromTo(
+            chars,
+            {
+              yPercent: 100 - i * 100,
+              autoAlpha: 0,
+            },
+            {
+              yPercent: -100 * i,
+              autoAlpha: 1,
+              stagger: 0.05,
+            }
+          )
+          .to({}, { duration: 3 })
+          .to(chars, {
+            yPercent: -100 * (i + 1),
+            autoAlpha: 0,
+            stagger: 0.05,
+          });
+      });
+
+      gsap.utils
+        .toArray<HTMLElement>(".aboutvisual__headline--second span")
+        .forEach((item) => {
+          gsap.fromTo(
+            item,
+            {
+              autoAlpha: 0,
+              y: gsap.utils.random(-80, 80),
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              ease: "power3.out",
+              duration: 0.5,
+              scrollTrigger: {
+                trigger: item,
+                containerAnimation: scrollTween,
+                start: "left center+=10%",
+              },
+            }
+          );
+        });
+    },
+    { scope: container }
+  );
 
   return (
-    <section className="aboutvisual">
+    <section className="aboutvisual" ref={container}>
       <div className="aboutvisual__inner">
         <div className="aboutvisual__headline aboutvisual__headline--first">
           <div className="aboutvisual__title aboutvisual__title--first">

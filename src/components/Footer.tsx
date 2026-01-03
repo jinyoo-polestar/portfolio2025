@@ -49,7 +49,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <p className="footer__title en-h1">
         <span>c</span>
         <span className="footer__title-img">

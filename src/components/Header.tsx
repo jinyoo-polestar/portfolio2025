@@ -12,7 +12,7 @@ import Link from "next/link";
 const menuItems = [
   { label: "about", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Get in touch", href: "#", isButton: true },
+  { label: "Get in touch", href: "/contact", isButton: true },
 ];
 
 export default function Header() {

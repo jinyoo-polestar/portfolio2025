@@ -1,52 +1,56 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
+
 import { gsap } from "gsap";
-import { useEffect, useState } from "react";
+import { useGSAP } from "@gsap/react";
 
 import { ProjectProps } from "@/data/projects";
 
 import "./ProjectInsight.scss";
 
+gsap.registerPlugin(useGSAP);
+
 export default function ProjectInsight({ data }: ProjectProps) {
   const [toggleState, setToggleState] = useState(0);
+  const container = useRef<HTMLElement | null>(null);
 
-  useEffect(() => {
-    const insightTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".insight",
-        start: "top top",
-        end: "bottom top",
-        pin: true,
-      },
-    });
-
-    insightTl
-      .fromTo(
-        [".insight__title"],
-        {
-          autoAlpha: 0,
+  useGSAP(
+    () => {
+      const insightTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top top",
+          end: "bottom top",
+          pin: true,
         },
-        {
-          autoAlpha: 1,
-        }
-      )
-      .fromTo(
-        [".insight__toggle-box", ".insight__contents"],
-        {
-          autoAlpha: 0,
-          yPercent: 50,
-        },
-        {
-          autoAlpha: 1,
-          yPercent: 0,
-          ease: "power3.out",
-        }
-      );
+      });
 
-    return () => {
-      insightTl.kill();
-    };
-  }, []);
+      insightTl
+        .fromTo(
+          [".insight__title"],
+          {
+            autoAlpha: 0,
+          },
+          {
+            autoAlpha: 1,
+          }
+        )
+        .fromTo(
+          [".insight__toggle-box", ".insight__contents"],
+          {
+            autoAlpha: 0,
+            yPercent: 50,
+          },
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            ease: "power3.out",
+          }
+        );
+    },
+    { scope: container }
+  );
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -71,7 +75,7 @@ export default function ProjectInsight({ data }: ProjectProps) {
   }, [toggleState]);
 
   return (
-    <section className="insight">
+    <section className="insight" ref={container}>
       <h3 className="insight__title en-t1">
         <span>project </span>
         <span>insights</span>

@@ -17,7 +17,7 @@ export default async function ProjectDetail({ params }: PageProps) {
   const project = projects.find((item) => item.id === Number(id));
 
   if (!project) {
-    return <div>Not found</div>;
+    return;
   }
 
   return (

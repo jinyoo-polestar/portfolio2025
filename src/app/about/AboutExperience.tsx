@@ -1,190 +1,193 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
 
 import { gsap } from "gsap";
-import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-import flowerImg from "#/img_flower.png";
 import { experience } from "@/data/about";
 
-gsap.registerPlugin(ScrollTrigger);
+import flowerImg from "#/img_flower.png";
 
 import "./AboutExperience.scss";
 
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
+
 export default function AboutExperience() {
-  useEffect(() => {
-    const experienceItems = gsap.utils.toArray<HTMLElement>(
-      ".experience__item-inner"
-    );
+  const container = useRef<HTMLElement | null>(null);
 
-    const initialRotationOffset = -36.25;
-    const shapes = gsap.utils.toArray(".experience__header-char");
-    const wrapRotation = gsap.utils.wrap(-90, 90);
-    const radius = 400;
+  useGSAP(
+    () => {
+      const experienceItems = gsap.utils.toArray<HTMLElement>(
+        ".experience__item-inner"
+      );
 
-    const mm = gsap.matchMedia();
+      const initialRotationOffset = -36.25;
+      const shapes = gsap.utils.toArray(".experience__header-char");
+      const wrapRotation = gsap.utils.wrap(-90, 90);
+      const radius = 400;
 
-    mm.add("(min-width:1025px)", () => {
-      const letterPos = [-36, -24, -12, 0, 12, 24, 36, 48, 60, 72];
+      const mm = gsap.matchMedia();
 
-      gsap.set(shapes, {
-        transformOrigin: `50% 50% ${-radius}px`,
-        rotationY: (i) => letterPos[i],
+      mm.add("(min-width:1025px)", () => {
+        const letterPos = [-36, -24, -12, 0, 12, 24, 36, 48, 60, 72];
+
+        gsap.set(shapes, {
+          transformOrigin: `50% 50% ${-radius}px`,
+          rotationY: (i) => letterPos[i],
+        });
+
+        gsap.fromTo(
+          shapes,
+          {
+            rotationY: (i) => letterPos[i] + initialRotationOffset,
+          },
+          {
+            rotationY: `-=${360}`,
+            modifiers: {
+              rotationY: (value) => wrapRotation(parseFloat(value)) + "deg",
+            },
+            duration: 10,
+            ease: "none",
+            repeat: -1,
+          }
+        );
       });
 
-      gsap.fromTo(
-        shapes,
-        {
-          rotationY: (i) => letterPos[i] + initialRotationOffset,
-        },
-        {
-          rotationY: `-=${360}`,
-          modifiers: {
-            rotationY: (value) => wrapRotation(parseFloat(value)) + "deg",
+      mm.add("(max-width:1024px)", () => {
+        const letterPos = [-18, -12, -6, 0, 6, 11, 16, 22, 29, 35];
+
+        gsap.set(shapes, {
+          transformOrigin: `50% 50% ${-radius}px`,
+          rotationY: (i) => letterPos[i],
+        });
+
+        gsap.fromTo(
+          shapes,
+          {
+            rotationY: (i) => letterPos[i] + initialRotationOffset,
           },
-          duration: 10,
-          ease: "none",
-          repeat: -1,
-        }
-      );
-    });
-
-    mm.add("(max-width:1024px)", () => {
-      const letterPos = [-18, -12, -6, 0, 6, 11, 16, 22, 29, 35];
-
-      gsap.set(shapes, {
-        transformOrigin: `50% 50% ${-radius}px`,
-        rotationY: (i) => letterPos[i],
+          {
+            rotationY: `-=${360}`,
+            modifiers: {
+              rotationY: (value) => wrapRotation(parseFloat(value)) + "deg",
+            },
+            duration: 10,
+            ease: "none",
+            repeat: -1,
+          }
+        );
       });
 
-      gsap.fromTo(
-        shapes,
-        {
-          rotationY: (i) => letterPos[i] + initialRotationOffset,
-        },
-        {
-          rotationY: `-=${360}`,
-          modifiers: {
-            rotationY: (value) => wrapRotation(parseFloat(value)) + "deg",
-          },
-          duration: 10,
-          ease: "none",
-          repeat: -1,
-        }
-      );
-    });
-
-    ScrollTrigger.create({
-      trigger: ".experience__header",
-      start: "top top",
-      end: "bottom top",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    ScrollTrigger.create({
-      trigger: ".experience__header",
-      start: "top top",
-      endTrigger: ".experience",
-      end: "bottom top",
-      pin: ".experience__img",
-      pinSpacing: false,
-    });
-
-    gsap.fromTo(
-      ".experience__img",
-      {
-        autoAlpha: 0,
-      },
-      {
-        autoAlpha: 0.7,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".experience__header",
-          start: "top top",
-          endTrigger: ".experience",
-          end: "bottom top",
-        },
-      }
-    );
-
-    gsap.fromTo(
-      [".experience__header-text", ".experience__header-inner"],
-      {
-        autoAlpha: 0,
-      },
-      {
-        autoAlpha: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".experience__header",
-          start: "top top",
-          end: "bottom top",
-        },
-      }
-    );
-
-    gsap.to(".experience__img", {
-      scale: 1.8,
-      xPercent: -100,
-      rotate: 90,
-      scrollTrigger: {
-        trigger: ".experience__list",
-        start: "top center",
-        end: "top top",
-        scrub: true,
-      },
-    });
-    gsap.to(".experience__header", {
-      autoAlpha: 0,
-      scrollTrigger: {
-        trigger: ".experience__list",
-        start: "top center",
-        end: "top top",
-        scrub: true,
-      },
-    });
-
-    const experienceListTl = gsap.to(".experience__items", {
-      xPercent: -100,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".experience__list",
+      ScrollTrigger.create({
+        trigger: ".experience__header",
         start: "top top",
         end: "bottom top",
         pin: true,
-        pinSpacing: true,
-        scrub: 5,
-      },
-    });
+        pinSpacing: false,
+      });
 
-    experienceItems.forEach((item) => {
+      ScrollTrigger.create({
+        trigger: ".experience__header",
+        start: "top top",
+        endTrigger: ".experience",
+        end: "bottom top",
+        pin: ".experience__img",
+        pinSpacing: false,
+      });
+
       gsap.fromTo(
-        item,
-        { rotationY: -60, z: 100 },
+        ".experience__img",
         {
-          rotationY: 60,
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 0.7,
+          ease: "none",
           scrollTrigger: {
-            trigger: item.closest(".experience__item"),
-            containerAnimation: experienceListTl,
-            start: "left center",
-            end: "right center",
-            scrub: 2,
+            trigger: ".experience__header",
+            start: "top top",
+            endTrigger: ".experience",
+            end: "bottom top",
           },
         }
       );
-    });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-      gsap.killTweensOf("*");
-    };
-  }, []);
+      gsap.fromTo(
+        [".experience__header-text", ".experience__header-inner"],
+        {
+          autoAlpha: 0,
+        },
+        {
+          autoAlpha: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".experience__header",
+            start: "top top",
+            end: "bottom top",
+          },
+        }
+      );
+
+      gsap.to(".experience__img", {
+        scale: 1.8,
+        xPercent: -100,
+        rotate: 90,
+        scrollTrigger: {
+          trigger: ".experience__list",
+          start: "top center",
+          end: "top top",
+          scrub: true,
+        },
+      });
+      gsap.to(".experience__header", {
+        autoAlpha: 0,
+        scrollTrigger: {
+          trigger: ".experience__list",
+          start: "top center",
+          end: "top top",
+          scrub: true,
+        },
+      });
+
+      const experienceListTl = gsap.to(".experience__items", {
+        xPercent: -100,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".experience__list",
+          start: "top top",
+          end: "bottom top",
+          pin: true,
+          pinSpacing: true,
+          scrub: 5,
+        },
+      });
+
+      experienceItems.forEach((item) => {
+        gsap.fromTo(
+          item,
+          { rotationY: -60, z: 100 },
+          {
+            rotationY: 60,
+            scrollTrigger: {
+              trigger: item.closest(".experience__item"),
+              containerAnimation: experienceListTl,
+              start: "left center",
+              end: "right center",
+              scrub: 2,
+            },
+          }
+        );
+      });
+    },
+    { scope: container }
+  );
 
   return (
-    <section className="experience">
+    <section className="experience" ref={container}>
       <div className="experience__img" data-speed="0">
         <Image src={flowerImg} alt="" fill priority />
       </div>
