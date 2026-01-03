@@ -185,6 +185,16 @@
         background-size: 60%;
         transform: translate(2.5vw, 10vh);
       }
+
+      .headline__text-roundbox:nth-child(6) {
+        right: calc($space-2xl * 5);
+      }
+
+      .headline__img {
+        width: 40vw;
+        right: calc($space-2xl * 6);
+        bottom: calc($space-2xl * 1);
+      }
     }
   }
 }

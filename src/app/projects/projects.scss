@@ -23,7 +23,6 @@
 
   &__categories {
     display: flex;
-    // height: 2.25rem;
     gap: $space-sm;
     margin-bottom: $space-2xl;
   }
@@ -60,6 +59,7 @@
     color: $color-white;
     text-transform: uppercase;
     cursor: pointer;
+    text-decoration: unset;
 
     &:hover {
       .projects__thumb {
