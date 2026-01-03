@@ -1,5 +1,5 @@
-@import "./font";
-@import "./variables";
+@use "../styles/font.scss" as *;
+@use "../styles/variables.scss" as *;
 
 html,
 body {
