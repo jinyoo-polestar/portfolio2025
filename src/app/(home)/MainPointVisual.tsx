@@ -11,6 +11,13 @@ export default function MainPointVisual() {
   useEffect(() => {
     gsap.set(".point-visual__item-intro", { xPercent: -150 });
 
+    ScrollTrigger.create({
+      trigger: ".point-visual",
+      start: "top top",
+      end: "bottom top",
+      pin: true,
+    });
+
     const pvTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".point-visual",
@@ -43,13 +50,6 @@ export default function MainPointVisual() {
         },
         "<"
       );
-
-    ScrollTrigger.create({
-      trigger: ".point-visual",
-      start: "top top",
-      end: "bottom top",
-      pin: true,
-    });
   });
 
   return (

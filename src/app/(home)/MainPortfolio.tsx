@@ -16,7 +16,7 @@ export default function MainPortfolio() {
         trigger: ".portfolio",
         start: "top top",
         end: "bottom top",
-        pin: true,
+        pin: ".portfolio__cards-wrapper",
       },
     });
 

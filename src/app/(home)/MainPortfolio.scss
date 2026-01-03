@@ -45,7 +45,6 @@ $card-count: 4;
     // top: 0;
     width: 60%;
     aspect-ratio: 430/290;
-
     border-radius: 1rem;
     margin-top: -10vh;
     margin-bottom: -10vh;
@@ -65,12 +64,18 @@ $card-count: 4;
       transform: rotateY(-60deg);
       background: gray;
       opacity: 0.7;
+      border-radius: $space-md;
+      overflow: hidden;
     }
   }
 }
 
 @media (max-width: 1024px) {
   .portfolio {
+    padding-top: 7.5rem;
+    height: 100vh;
+    overflow: hidden;
+
     &__title {
       top: 7.5rem;
     }
@@ -87,14 +92,18 @@ $card-count: 4;
     &__card {
       position: relative;
       width: 100%;
+      margin: 0;
       transform-style: unset;
-      transform: none !important;
+      transform: none;
+      perspective: none;
+
+      a {
+        transform: none;
+      }
     }
 
     @for $i from 1 through $card-count {
       &:nth-child(#{$i}) {
-        z-index: 1 !important;
-        transform: none !important;
       }
     }
   }

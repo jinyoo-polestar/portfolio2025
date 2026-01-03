@@ -28,10 +28,10 @@ export default function RootLayout({
       <body>
         <Header />
         <ScrambleText />
-        <ScrollSmootherProvider>
-          {children}
-          <Footer />
-        </ScrollSmootherProvider>
+        {/* <ScrollSmootherProvider> */}
+        {children}
+        <Footer />
+        {/* </ScrollSmootherProvider> */}
       </body>
     </html>
   );

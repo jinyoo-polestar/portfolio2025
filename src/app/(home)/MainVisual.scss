@@ -20,7 +20,8 @@
     color: $color-white;
     text-transform: uppercase;
 
-    p {
+    p:first-child > span,
+    p:last-child {
       display: inline-block;
       width: fit-content;
       padding: $space-ml;
@@ -90,11 +91,11 @@
         padding: 0;
       }
 
-      p:first-child span,
-      p:last-child {
-        padding: $space-sm;
-        background-color: rgba(58, 58, 58, 0.4);
-      }
+      // p:first-child span,
+      // p:last-child {
+      //   padding: $space-sm;
+      //   background-color: rgba(58, 58, 58, 0.4);
+      // }
 
       p:first-child span:first-child {
         width: fit-content;
@@ -111,6 +112,7 @@
     }
     &__bottom {
       max-width: unset;
+      margin-left: 0;
 
       h1 {
         line-height: $line-height-130;
@@ -121,7 +123,7 @@
       }
 
       p {
-        width: 70%;
+        width: 80%;
         word-break: keep-all;
       }
     }

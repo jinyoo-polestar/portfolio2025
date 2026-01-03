@@ -18,7 +18,7 @@ export default function MainProfile() {
       scrollTrigger: {
         trigger: ".profile",
         start: "top top",
-        pin: true,
+        pin: window.innerWidth > 1024 ? "true" : "false",
       },
     });
     gsap.set(".profile__content", { autoAlpha: 0 });
@@ -39,7 +39,7 @@ export default function MainProfile() {
           duration: 0.5,
         }
       );
-  });
+  }, []);
 
   return (
     <section className="profile">
