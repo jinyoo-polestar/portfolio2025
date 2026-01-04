@@ -12,7 +12,6 @@ import highendtaxThumb from "#/img_thumb_highendtax.jpg";
 import highendtaxMockup from "#/img_mockup_highendtax.png";
 import widmiceThumb from "#/img_thumb_widmice.jpg";
 import widmiceMockup from "#/img_mockup_widmice.png";
-import adlerThumb from "#/img_thumb_adler.jpg";
 import adlerMockup from "#/img_mockup_adler.png";
 import HtmlIcon from "#/ic_html.svg";
 import CssIcon from "#/ic_css.svg";
@@ -28,6 +27,17 @@ import Cafe24Icon from "#/ic_cafe24.svg";
 import PhpIcon from "#/ic_php.png";
 import MuiIcon from "#/ic_mui.png";
 import TailwindIcon from "#/ic_tailwind.png";
+import codeIcon from "#/ic_built-code.png";
+import designIcon from "#/ic_built-design.png";
+import deviceIcon from "#/ic_built-device.png";
+import editIcon from "#/ic_built-edit.png";
+import gsapIcon from "#/ic_built-gsap.png";
+import listIcon from "#/ic_built-list.png";
+import pagesIcon from "#/ic_built-pages.png";
+import searchIcon from "#/ic_built-search.png";
+import seoIcon from "#/ic_built-seo.png";
+import websiteIcon from "#/ic_built-website.png";
+import languageIcon from "#/ic_built-language.png";
 
 type Skill = {
   name: string;
@@ -35,6 +45,7 @@ type Skill = {
 };
 
 type Built = {
+  icon: StaticImageData;
   title: string;
   desc: string;
 };
@@ -84,34 +95,40 @@ export const projects: Project[] = [
     ],
     built: [
       {
+        icon: pagesIcon,
         title: "전체 50+개 서브페이지 퍼블리싱",
         desc: "PC/MO 환경에 맞춰 전체 50+개 서브페이지를 반응형으로 퍼블리싱",
       },
       {
+        icon: gsapIcon,
         title: "인터랙션 구현",
         desc: "GSAP를 활용한 스크롤 기반 인터랙션을 메인/브랜드 페이지에 적용",
       },
       {
+        icon: seoIcon,
         title: "운영 가이드 작성 및 고객 대응",
         desc: "SEO, 게시판 관리, 이미지 교체 등 운영 가이드 작성 및 고객 요청 반영",
       },
       {
+        icon: designIcon,
         title: "디자인 시스템 적용",
         desc: "컴포넌트, 색상, 타이포그래피 등 디자인 시스템을 적용해 일관된 UI 구현",
       },
       {
+        icon: websiteIcon,
         title: "크로스 브라우징 완료",
         desc: "Chrome, Safari, Edge, 모바일 브라우저 등 다양한 환경에서 레이아웃과 기능 호환성 검증",
       },
     ],
-    result: "",
-    learning: "",
+    result: `두번째 쇼핑몰 구축 프로젝트로, 유사한 페이지를 묶어 디자인 시스템을 적용함으로써 개발 시간을 단축했습니다.\n 또한 갤럭시 플립과 같은 특수 디바이스 화면 크기도 고려하여 반응형 작업을 완료했습니다.`,
+    learning:
+      "특수 디바이스 대응을 고려하며 반응형 설계의 세부 조정과 테스트 과정이 중요함을 체감했습니다. 앞으로는 다양한 디바이스 환경에서 일관성 있는 UX를 유지할 수 있도록 반응형 전략을 보다 체계적으로 적용하고자 합니다",
   },
   {
     id: 2,
     name: "영림 웹사이트 구축",
     enName: "younglim",
-    url: "https://www.ylchem.co.kr",
+    url: "http://www.ylchem.co.kr",
     thumbnail: younglimThumb,
     mockup: younglimMockup,
     overview:
@@ -125,38 +142,48 @@ export const projects: Project[] = [
     ],
     skills: [
       { name: "PHP", icon: PhpIcon },
-      // { name: "MySQL", icon: "" },
+      { name: "HTML", icon: HtmlIcon },
+      { name: "Css", icon: CssIcon },
+      { name: "jquery", icon: JqueryIcon },
       { name: "GSAP", icon: GsapIcon },
       { name: "Figma", icon: FigmaIcon },
     ],
     built: [
       {
+        icon: deviceIcon,
         title: "반응형 퍼블리싱",
         desc: "PC/MO 환경에 맞춘 반응형 퍼블리싱",
       },
       {
+        icon: gsapIcon,
         title: "인터랙션 구현",
         desc: "GSAP를 활용한 스크롤 기반 인터랙션을 전체 페이지에 적용",
       },
       {
+        icon: pagesIcon,
         title: "빌더 기반 웹사이트/관리자페이지 구축",
         desc: "개발 기간 단축 및 고객사 입장에서 사용하기 쉬운 UI 구현",
       },
       {
+        icon: listIcon,
         title: "콘텐츠 관리 가능한 관리자페이지 구축",
         desc: "제품 등록/삭제/수정 및 이미지/텍스트 교체가 가능한 관리자페이지 구축",
       },
       {
+        icon: editIcon,
         title: "운영 가이드 작성 및 고객 대응",
         desc: "이미지 및 텍스트 교체 등 운영 가이드 작성과 고객 요청 반영",
       },
       {
+        icon: designIcon,
         title: "디자인 시스템 적용",
         desc: "컴포넌트, 색상, 타이포그래피 등 디자인 시스템을 적용해 일관된 UI 구현",
       },
     ],
-    result: "",
-    learning: "",
+    result:
+      "그누보드 기반 빌더를 활용해 웹사이트와 관리자 페이지를 구축했습니다. MySQL과 PHP를 사용해 클라이언트 요구에 맞춘 기능을 커스터마이징하여 제공했습니다. 또한 운영 가이드를 작성하고, 개발 완료 후 클라이언트 미팅에 참여해 관리자페이지 운영 방법을 안내했습니다.",
+    learning:
+      "PHP와 MySQL을 처음 사용하게 되어 익히는 데 시간이 걸렸지만, 개인적으로 스터디를 진행하며 문제없이 프로젝트를 마무리할 수 있었습니다. 이를 통해 PHP 기반 그누보드에 대한 이해를 쌓았으며, 이후 유사한 관리자 페이지 구축 프로젝트가 있다면 처음부터 직접 설계해보고 싶다는 생각을 하게 되었습니다.",
   },
 
   {
@@ -183,32 +210,40 @@ export const projects: Project[] = [
     ],
     built: [
       {
+        icon: pagesIcon,
         title: "전체 50+개 서브페이지 퍼블리싱",
         desc: "기본 템플릿 없는 상태에서 전체 50+개 서브페이지를 반응형으로 퍼블리싱",
       },
       {
+        icon: gsapIcon,
         title: "인터랙션 구현",
         desc: "GSAP를 활용한 스크롤 기반 인터랙션을 메인/브랜드 및 서브 페이지에 적용",
       },
       {
+        icon: editIcon,
         title: "배너/콘텐츠 관리 최적화",
         desc: "카페24 기반 배너 매니저 등을 활용해 이미지와 텍스트를 쉽게 교체할 수 있도록 설정",
       },
       {
+        icon: editIcon,
         title: "운영 가이드 작성 및 고객 대응",
         desc: "게시판 관리, 이미지 교체 등 운영 가이드 작성 및 고객 요청 사항 반영",
       },
       {
+        icon: designIcon,
         title: "디자인 시스템 적용",
         desc: "컴포넌트, 색상, 타이포그래피 등 디자인 시스템을 적용해 일관된 UI 구축",
       },
       {
+        icon: websiteIcon,
         title: "크로스 브라우징 완료",
         desc: "Chrome, Safari, Edge, 모바일 브라우저 등 다양한 환경에서 호환성 검증",
       },
     ],
-    result: "",
-    learning: "",
+    result:
+      "첫 쇼핑몰 구축 프로젝트로, 템플릿을 사용하지 않고 전체 50여 페이지의 퍼블리싱을 담당했습니다. 카페24 기반 배너 매니저를 활용해 클라이언트가 코드 없이 이미지와 텍스트를 손쉽게 교체할 수 있도록 개발했습니다. 또한 운영 가이드를 제작해 클라이언트의 편의성을 높이고, 유지보수와 관리가 용이한 환경을 제공했습니다.",
+    learning:
+      "카페24의 페이지 구조와 모듈 사용법을 이해하며 퍼블리싱 경험을 쌓았습니다. 여유가 있을 때는 직접 템플릿을 제작해보고 싶다는 생각을 했고, 앞으로는 카페24 외 다양한 쇼핑몰 툴도 경험해보며 역량을 확장하고자 합니다.",
   },
   {
     id: 4,
@@ -234,24 +269,30 @@ export const projects: Project[] = [
     ],
     built: [
       {
+        icon: pagesIcon,
         title: "전체 페이지 퍼블리싱",
         desc: "기존 홈페이지 구조를 재정비하고 PC/MO 환경에 맞춰 반응형으로 퍼블리싱",
       },
       {
+        icon: designIcon,
         title: "디자인 시스템 적용",
         desc: "컴포넌트, 색상, 타이포그래피 등 일관된 디자인 시스템 적용",
       },
       {
+        icon: gsapIcon,
         title: "스크롤 기반 인터랙션 구현",
         desc: "메인 및 서브 페이지에 자연스러운 스크롤 애니메이션 적용",
       },
       {
+        icon: websiteIcon,
         title: "크로스 브라우징 / 반응형 검증",
         desc: "다양한 브라우저 및 디바이스 환경에서 호환성 검증",
       },
     ],
-    result: "",
-    learning: "",
+    result:
+      "자사 랜딩페이지 리뉴얼 프로젝트로 인터랙티브한 인터랙션을 적용하며 리뉴얼을 진행했습니다. 사내 디자인 시스템을 반영해 개발 속도를 높이고, 유지보수를 보다 간편하게 하였으며, 결과적으로 예상 개발 기간보다 1주 앞당겨 완료했습니다.",
+    learning:
+      "디자인 시스템을 기반으로 퍼블리싱을 진행하며, 컴포넌트 단위 설계가 유지보수와 작업 효율에 큰 영향을 준다는 것을 배웠습니다. 또한 인터랙티브한 인터랙션을 적용하며, 부드럽게 표현하고 성능을 최적화하는 방법에 관심을 갖고 공부해야겠다는 생각을 하게 되었습니다.",
   },
   {
     id: 5,
@@ -277,20 +318,25 @@ export const projects: Project[] = [
     ],
     built: [
       {
+        icon: pagesIcon,
         title: "전체 페이지 퍼블리싱",
         desc: "기존 홈페이지 구조를 재정비하고 PC/MO 환경에 맞춰 반응형으로 퍼블리싱",
       },
       {
+        icon: gsapIcon,
         title: "스크롤 기반 인터랙션 구현",
         desc: "메인/서브 페이지에서 자연스러운 스크롤 애니메이션과 모션 적용",
       },
       {
+        icon: websiteIcon,
         title: "크로스 브라우징 / 반응형 검증",
         desc: "Chrome, Safari, Edge, 모바일 브라우저 등 다양한 환경에서 호환성 검증",
       },
     ],
-    result: "",
-    learning: "",
+    result:
+      "세무 서비스 특성을 고려해 과도한 인터렉션을 지양하고 PC/tablet/mobile 전 구간에서 안정적인 화면을 보여줄 수 있도록 했습니다. 검색 노출/유지보수/클라이언트 대응 및 SEO 재등록까지 다양한 경험을 진행할 수 있는 프로젝트였었습니다.",
+    learning:
+      "디자인–개발 협업 프로세스를 처음으로 도입해 진행한 프로젝트입니다. 협업 구조를 정립함으로써 개발 효율을 높이고 불필요한 커뮤니케이션을 최소화할 수 있었습니다. 이를 통해 서비스 목적에 맞는 퍼블리싱 방식과 인터랙션 설계의 중요성을 이해하게 되었습니다.",
   },
   {
     id: 6,
@@ -317,49 +363,56 @@ export const projects: Project[] = [
     ],
     built: [
       {
+        icon: pagesIcon,
         title: "전체 페이지 퍼블리싱",
         desc: "기존 홈페이지 구조를 재정비하고 PC/MO 환경에 맞춰 반응형으로 퍼블리싱",
       },
       {
+        icon: gsapIcon,
         title: "스크롤 기반 인터랙션 구현",
         desc: "메인 및 서브 페이지에서 자연스러운 스크롤 애니메이션과 모션 적용",
       },
       {
+        icon: languageIcon,
         title: "다국어(KR/EN) 구조 설계",
         desc: "언어별 콘텐츠 분리 및 확장 가능한 다국어 콘텐츠 구조 설계",
       },
       {
+        icon: websiteIcon,
         title: "크로스 브라우징 / 반응형 검증",
         desc: "Chrome, Safari, Edge, 모바일 브라우저 등 다양한 환경에서 호환성 검증",
       },
     ],
-    result: "",
-    learning: "",
+    result:
+      "GSAP을 활용해 스크롤 인터렉션을 구현하며 인터렉션 퍼블리싱 경험을 쌓았습니다. 또한 Next.js 환경에서 다국어 적용을 염두에 둔 마크업 구조를 설계해 확장 가능성을 고려했습니다.",
+    learning:
+      "첫 프로젝트이자 제한된 일정으로 GSAP의 다양한 기능을 충분히 활용하지는 못했지만,핵심적인 스크롤 인터랙션 구현을 통해 GSAP의 구조와 사용 흐름을 이해할 수 있었습니다. 이후 프로젝트에서는 타임라인 구성과 인터랙션 설계를 더욱 적극적으로 적용하고자 합니다.",
   },
-  {
-    id: 7,
-    name: "아들러",
-    enName: "adler",
-    url: "https://www.adler3d.com",
-    thumbnail: adlerThumb,
-    mockup: adlerMockup,
-    overview: "",
-    period: "2022.06 ~ 2023.08",
-    role: ["", "", ""],
-    skills: [
-      { name: "Next.js", icon: NextjsIcon },
-      { name: "React", icon: ReactIcon },
-      { name: "MUI", icon: MuiIcon },
-      { name: "Figma", icon: FigmaIcon },
-      { name: "Jira", icon: JiraIcon },
-    ],
-    built: [
-      {
-        title: "",
-        desc: "",
-      },
-    ],
-    result: "",
-    learning: "",
-  },
+  // {
+  //   id: 7,
+  //   name: "아들러",
+  //   enName: "adler",
+  //   url: "https://www.adler3d.com",
+  //   thumbnail: adlerThumb,
+  //   mockup: adlerMockup,
+  //   overview: "",
+  //   period: "2022.06 ~ 2023.08",
+  //   role: ["", "", ""],
+  //   skills: [
+  //     { name: "Next.js", icon: NextjsIcon },
+  //     { name: "React", icon: ReactIcon },
+  //     { name: "MUI", icon: MuiIcon },
+  //     { name: "Figma", icon: FigmaIcon },
+  //     { name: "Jira", icon: JiraIcon },
+  //   ],
+  //   built: [
+  //     {
+  //       icon: searchIcon,
+  //       title: "",
+  //       desc: "",
+  //     },
+  //   ],
+  //   result: "",
+  //   learning: "",
+  // },
 ];

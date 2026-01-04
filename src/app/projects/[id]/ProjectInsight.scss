@@ -89,6 +89,8 @@
     }
 
     &-desc {
+      width: 85%;
+      word-break: keep-all;
       color: $color-gray-200;
     }
   }
@@ -131,6 +133,10 @@
 
       &--right {
         text-align: left;
+      }
+
+      &-desc {
+        width: 100%;
       }
     }
   }

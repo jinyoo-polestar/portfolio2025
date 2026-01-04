@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 
 import { gsap } from "gsap";
@@ -60,7 +61,11 @@ export default function ProjectBuilt({ data }: ProjectProps) {
         {data.built.map((item, i) => {
           return (
             <li className="built__content" key={i}>
-              <div className="built__content-thumb"></div>
+              <div className="built__content-thumb">
+                <i className="built__content-thumbicon">
+                  <Image src={item.icon} alt={item.title} />
+                </i>
+              </div>
               <h4 className="built__content-title kr-s1">
                 <i className="built__content-icon"></i>
                 {item.title}
