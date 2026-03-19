@@ -22,7 +22,7 @@ export default function AboutExperience() {
   useGSAP(
     () => {
       const experienceItems = gsap.utils.toArray<HTMLElement>(
-        ".experience__item-inner"
+        ".experience__item-inner",
       );
 
       const initialRotationOffset = -36.25;
@@ -53,7 +53,7 @@ export default function AboutExperience() {
             duration: 10,
             ease: "none",
             repeat: -1,
-          }
+          },
         );
       });
 
@@ -78,7 +78,7 @@ export default function AboutExperience() {
             duration: 10,
             ease: "none",
             repeat: -1,
-          }
+          },
         );
       });
 
@@ -113,7 +113,7 @@ export default function AboutExperience() {
             endTrigger: ".experience",
             end: "bottom top",
           },
-        }
+        },
       );
 
       gsap.fromTo(
@@ -129,7 +129,7 @@ export default function AboutExperience() {
             start: "top top",
             end: "bottom top",
           },
-        }
+        },
       );
 
       gsap.to(".experience__img", {
@@ -159,10 +159,10 @@ export default function AboutExperience() {
         scrollTrigger: {
           trigger: ".experience__list",
           start: "top top",
-          end: "bottom top",
+          end: "+=3000",
           pin: true,
           pinSpacing: true,
-          scrub: 5,
+          scrub: 3,
         },
       });
 
@@ -177,13 +177,13 @@ export default function AboutExperience() {
               containerAnimation: experienceListTl,
               start: "left center",
               end: "right center",
-              scrub: 2,
+              scrub: 5,
             },
-          }
+          },
         );
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (

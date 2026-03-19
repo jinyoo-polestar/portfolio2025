@@ -1,7 +1,7 @@
 export const works = [
   {
     company: "오오오에스",
-    period: "2025.02 ~",
+    period: "25.02 ~ 26.03",
     details: [
       "웹사이트 초기 구축 및 퍼블리싱",
       "반응형 웹 작업 및 크로스브라우징 대응",
@@ -13,7 +13,7 @@ export const works = [
   },
   {
     company: "아들러",
-    period: "2022.06.23 ~ 2023.09.01",
+    period: "22.06 ~ 23.09",
     details: [
       "프론트엔드 개발 및 퍼블리싱",
       "프로젝트 일정 관리 및 커뮤니케이션",

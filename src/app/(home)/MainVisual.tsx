@@ -16,6 +16,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function MainVisual() {
   useGSAP(() => {
+    const mm = gsap.matchMedia();
+
     ScrollTrigger.create({
       trigger: ".main-visual",
       start: "top top",
@@ -36,17 +38,32 @@ export default function MainVisual() {
       },
     });
 
-    gsap.to(".main-visual__img", {
-      xPercent: 100,
-      scale: 1,
-      rotate: "-40deg",
-      scrollTrigger: {
-        trigger: ".main-intro",
-        start: "bottom center",
-        endTrigger: ".profile",
-        end: "top top",
-        scrub: true,
-      },
+    mm.add("(min-width:1025px)", () => {
+      gsap.to(".main-visual__img", {
+        xPercent: 100,
+        scale: 1,
+        rotate: "-40deg",
+        scrollTrigger: {
+          trigger: ".main-intro",
+          start: "bottom center",
+          endTrigger: ".profile",
+          end: "top top",
+          scrub: true,
+        },
+      });
+    });
+
+    mm.add("(max-width:1024px)", () => {
+      gsap.to(".main-visual__img", {
+        autoAlpha: 0,
+        scrollTrigger: {
+          trigger: ".main-intro",
+          start: "bottom center",
+          endTrigger: ".profile",
+          end: "top top",
+          scrub: true,
+        },
+      });
     });
   });
 
